@@ -8,19 +8,19 @@ import {
 
 import { sequelize } from "../../config/database";
 
-export class Role extends Model<
-  InferAttributes<Role>,
-  InferCreationAttributes<Role>
+export class Permission extends Model<
+  InferAttributes<Permission>,
+  InferCreationAttributes<Permission>
 > {
   declare id: CreationOptional<number>;
 
-  declare name: string;
+  declare code: string;
 
   declare description: string;
 
 }
 
-Role.init(
+Permission.init(
   {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
@@ -29,7 +29,7 @@ Role.init(
     },
 
 
-    name: {
+    code: {
       type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
@@ -44,7 +44,7 @@ Role.init(
   {
     sequelize,
 
-    tableName: "roles",
+    tableName: "permissions",
 
     timestamps: true,
   }

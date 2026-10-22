@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { RoleService } from "./role.service.js";
+import { AuthTokenService } from "./auth-token.service.js";
 
-export class RoleController {
+export class AuthTokenController {
 
   static async getAll(
     req: Request,
@@ -9,9 +9,9 @@ export class RoleController {
     next: NextFunction
   ) {
     try {
-      const roles = await RoleService.findAll();
+      const authTokens = await AuthTokenService.findAll();
 
-      res.json(roles);
+      res.json(authTokens);
     } catch (error) {
       next(error);
     }
@@ -26,17 +26,17 @@ export class RoleController {
     try {
       const id = Number(req.params.id);
 
-      const role = await RoleService.findById(id);
+      const authToken = await AuthTokenService.findById(id);
 
-      if (!role) {
+      if (!authToken) {
         res.status(404).json({
-          message: "Role not found",
+          message: "Auth token not found",
         });
 
         return;
       }
 
-      res.json(role);
+      res.json(authToken);
 
     } catch (error) {
       next(error);
@@ -50,22 +50,24 @@ export class RoleController {
     next: NextFunction
   ) {
     try {
-      const { name, description } = req.body;
+      const { userId, tokenHash, tokenType, expiresAt } = req.body;
 
-      if (!name || !description) {
+      if (!userId || !tokenHash || !tokenType) {
         res.status(400).json({
-          message: "name and description are required",
+          message: "userId, tokenHash, and tokenType are required",
         });
 
         return;
       }
 
-      const role = await RoleService.create({
-        name,
-        description
+      const authToken = await AuthTokenService.create({
+        userId,
+        tokenHash,
+        tokenType,
+        expiresAt,
       });
 
-      res.status(201).json(role);
+      res.status(201).json(authToken);
 
     } catch (error) {
       next(error);
@@ -81,22 +83,22 @@ export class RoleController {
     try {
       const id = Number(req.params.id);
 
-      const role = await RoleService.findById(id);
+      const authToken = await AuthTokenService.findById(id);
 
-      if (!role) {
+      if (!authToken) {
         res.status(404).json({
-          message: "Role not found",
+          message: "Auth token not found",
         });
 
         return;
       }
 
-      const updatedRole = await RoleService.update(
-        role,
+      const updatedAuthToken = await AuthTokenService.update(
+        authToken,
         req.body
       );
 
-      res.json(updatedRole);
+      res.json(updatedAuthToken);
 
     } catch (error) {
       next(error);
@@ -112,17 +114,17 @@ export class RoleController {
     try {
       const id = Number(req.params.id);
 
-      const role = await RoleService.findById(id);
+      const authToken = await AuthTokenService.findById(id);
 
-      if (!role) {
+      if (!authToken) {
         res.status(404).json({
-          message: "Role not found",
+          message: "Auth token not found",
         });
 
         return;
       }
 
-      await RoleService.delete(role);
+      await AuthTokenService.delete(authToken);
 
       res.status(204).send();
 

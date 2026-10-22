@@ -1,4 +1,4 @@
-import { Role } from "./role.model.js";
+import { Role } from "./role-permission.model.js";
 
 export class RoleService {
 
