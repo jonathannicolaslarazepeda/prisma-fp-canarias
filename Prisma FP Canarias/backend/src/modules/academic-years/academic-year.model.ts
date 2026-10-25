@@ -14,9 +14,13 @@ export class academicYear extends Model<
     InferCreationAttributes<academicYear>
 > {
     declare id: CreationOptional<number>;
+
     declare name: string;
+
     declare startDate: Date;
+
     declare endDate: Date;
+    
     declare isActive: CreationOptional<boolean>;
 }
 

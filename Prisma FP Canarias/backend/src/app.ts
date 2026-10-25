@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import apiRouter from "./routes/index-template";
+import apiRouter from "./routes/index";
 import { notFoundMiddleware } from "./middlewares/not-found.middleware";
 import { errorMiddleware } from "./middlewares/error.middleware";
 
