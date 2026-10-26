@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { RoleService } from "./role-permission.service.js";
+import { RolePermissionService } from "./role-permission.service.js";
 
-export class RoleController {
+export class RolePermissionController {
 
   static async getAll(
     req: Request,
@@ -9,9 +9,9 @@ export class RoleController {
     next: NextFunction
   ) {
     try {
-      const roles = await RoleService.findAll();
+      const rolePermissions = await RolePermissionService.findAll();
 
-      res.json(roles);
+      res.json(rolePermissions);
     } catch (error) {
       next(error);
     }
@@ -26,17 +26,17 @@ export class RoleController {
     try {
       const id = Number(req.params.id);
 
-      const role = await RoleService.findById(id);
+      const rolePermission = await RolePermissionService.findById(id);
 
-      if (!role) {
+      if (!rolePermission) {
         res.status(404).json({
-          message: "Role not found",
+          message: "Role Permission not found",
         });
 
         return;
       }
 
-      res.json(role);
+      res.json(rolePermission);
 
     } catch (error) {
       next(error);
@@ -60,12 +60,12 @@ export class RoleController {
         return;
       }
 
-      const role = await RoleService.create({
-        name,
-        description
+      const rolePermission = await RolePermissionService.create({
+       roleId: req.body.roleId,
+       permissionId: req.body.permissionId
       });
 
-      res.status(201).json(role);
+      res.status(201).json(rolePermission);
 
     } catch (error) {
       next(error);
@@ -81,22 +81,22 @@ export class RoleController {
     try {
       const id = Number(req.params.id);
 
-      const role = await RoleService.findById(id);
+      const rolePermission = await RolePermissionService.findById(id);
 
-      if (!role) {
+      if (!rolePermission) {
         res.status(404).json({
-          message: "Role not found",
+          message: "Role Permission not found",
         });
 
         return;
       }
 
-      const updatedRole = await RoleService.update(
-        role,
+      const updatedRolePermission = await RolePermissionService.update(
+        rolePermission,
         req.body
       );
 
-      res.json(updatedRole);
+      res.json(updatedRolePermission);
 
     } catch (error) {
       next(error);
@@ -112,17 +112,17 @@ export class RoleController {
     try {
       const id = Number(req.params.id);
 
-      const role = await RoleService.findById(id);
+      const rolePermission = await RolePermissionService.findById(id);
 
-      if (!role) {
+      if (!rolePermission) {
         res.status(404).json({
-          message: "Role not found",
+          message: "Role Permission not found",
         });
 
         return;
       }
 
-      await RoleService.delete(role);
+      await RolePermissionService.delete(rolePermission);
 
       res.status(204).send();
 

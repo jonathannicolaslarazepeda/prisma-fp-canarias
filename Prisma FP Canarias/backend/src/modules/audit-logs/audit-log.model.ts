@@ -4,6 +4,7 @@ import {
   InferAttributes,
   InferCreationAttributes,
   CreationOptional,
+  NonNullFindOptions,
 } from "sequelize";
 
 import { sequelize } from "../../config/database";
@@ -22,9 +23,9 @@ export class AuditLog extends Model<
 
   declare entityId: number;
 
-  declare previousValues: CreationOptional<JSON>;
+  declare previousValues: CreationOptional<JSON | null>;
 
-  declare newValues: CreationOptional<JSON>;
+  declare newValues: CreationOptional<JSON | NonNullFindOptions>;
 
   declare createdAt: CreationOptional<Date>;
 
@@ -73,8 +74,6 @@ AuditLog.init(
       allowNull: true,
     },
 
- 
-
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -88,5 +87,6 @@ AuditLog.init(
     tableName: "AuditLogs",
 
     timestamps: true,
+    updatedAt: false,
   }
 );  

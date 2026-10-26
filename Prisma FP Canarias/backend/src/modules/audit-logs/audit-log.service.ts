@@ -1,3 +1,4 @@
+
 import { AuditLog } from "./audit-log.model.js";
 
 export class AuditLogService {
@@ -18,8 +19,8 @@ export class AuditLogService {
     action: string;
     entityType: string;
     entityId: number;
-    previousValues?: unknown;
-    newValues?: unknown;
+    previousValues?: JSON;
+    newValues?: JSON;
   }) {
     return AuditLog.create(data);
   }
@@ -32,8 +33,8 @@ export class AuditLogService {
       action?: string;
       entityType?: string;
       entityId?: number;
-      previousValues?: unknown;
-      newValues?: unknown;
+      previousValues?: JSON;
+      newValues?: JSON;
     }
   ) {
     return auditLog.update(data);

@@ -1,38 +1,39 @@
-import { Role } from "./role-permission.model.js";
+import { RolePermission } from "./role-permission.model.js";
 
-export class RoleService {
+export class RolePermissionService {
 
   static async findAll() {
-    return Role.findAll({
+    return RolePermission.findAll({
       order: [["id", "ASC"]],
     });
   }
 
   static async findById(id: number) {
-    return Role.findByPk(id);
+    return RolePermission.findByPk(id);
   }
 
 
   static async create(data: {
-    name: string;
-    description: string;
+    roleId: number;
+    permissionId: number;
   }) {
-    return Role.create(data);
+    return RolePermission.create(data);
   }
 
 
   static async update(
-    role: Role,
+    rolePermission: RolePermission,
     data: {
-      name?: string;
-      description?: string;
+      roleId?: number;
+      permissionId?: number;
     }
   ) {
-    return role.update(data);
+    return rolePermission.update(data);
   }
 
 
-  static async delete(role: Role) {
-    await role.destroy();
+
+  static async delete(rolePermission: RolePermission) {
+    await rolePermission.destroy();
   }
 }

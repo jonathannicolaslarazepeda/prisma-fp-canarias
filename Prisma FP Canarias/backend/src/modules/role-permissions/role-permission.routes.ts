@@ -1,16 +1,16 @@
 import { Router } from "express";
-import { RoleController } from "./role-permission.controller.js";
+import { RolePermissionController } from "./role-permission.controller.js";
 
 const router = Router();
 
-router.get("/", RoleController.getAll);
+router.get("/", RolePermissionController.getAll);
 
-router.get("/:id", RoleController.getById);
+router.get("/:id", RolePermissionController.getById);
 
-router.post("/", RoleController.create);
+router.post("/", RolePermissionController.create);
 
-router.put("/:id", RoleController.update);
+router.put("/:id", RolePermissionController.update);
 
-router.delete("/:id", RoleController.delete);
+router.delete("/:id", RolePermissionController.delete);
 
 export default router;
