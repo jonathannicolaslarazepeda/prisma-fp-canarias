@@ -60,6 +60,6 @@ educationalCenter.init(
         
     },
     {
-        sequelize, tableName: "EducationalCenter", modelName: "educationalCenter", timestamps: true,
+        sequelize, tableName: "educational_centers", modelName: "educationalCenter", timestamps: true,
     }
 );
