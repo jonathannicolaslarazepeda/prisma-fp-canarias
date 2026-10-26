@@ -6,7 +6,6 @@ import { RolePermission } from "../modules/role-permissions/role-permission.mode
 import { AuthToken } from "../modules/auth-tokens/auth-token.model.js";
 
 
-
 export function defineAssociations() {
 
     // =========================
