@@ -13,7 +13,7 @@ export function defineAssociations() {
     // USER <-> USER ROLE
     // =========================
 
-    User.hasMany(RoleUser, {foreignKey: "userId", as: "roleUsers"});
+    User.hasMany(RoleUser, {foreignKey: "userId", as: "role_users"});
     RoleUser.belongsTo(User, {foreignKey: "userId", as: "user"});
 
 
@@ -21,7 +21,7 @@ export function defineAssociations() {
     // ROLE <-> USER ROLE
     // =========================
 
-    Role.hasMany(RoleUser, {foreignKey: "roleId", as: "roleUsers"});
+    Role.hasMany(RoleUser, {foreignKey: "roleId", as: "role_users"});
     RoleUser.belongsTo(Role, {foreignKey: "roleId", as: "role"});
 
 
@@ -29,7 +29,7 @@ export function defineAssociations() {
     // ROLE <-> ROLE PERMISSION
     // =========================
 
-    Role.hasMany(RolePermission, {foreignKey: "roleId", as: "rolePermissions"});
+    Role.hasMany(RolePermission, {foreignKey: "roleId", as: "role_permissions"});
     RolePermission.belongsTo(Role, {foreignKey: "roleId", as: "role"});
 
 
@@ -37,7 +37,7 @@ export function defineAssociations() {
     // PERMISSION <-> ROLE PERMISSION
     // =========================
 
-    Permission.hasMany(RolePermission, {foreignKey: "permissionId", as: "rolePermissions",});
+    Permission.hasMany(RolePermission, {foreignKey: "permissionId", as: "role_permissions",});
     RolePermission.belongsTo(Permission, {foreignKey: "permissionId", as: "permission",});
 
 
@@ -45,7 +45,7 @@ export function defineAssociations() {
     // USER <-> AUTH TOKEN
     // =========================
 
-    User.hasMany(AuthToken, {foreignKey: "userId", as: "authTokens"});
+    User.hasMany(AuthToken, {foreignKey: "userId", as: "auth_tokens"});
     AuthToken.belongsTo(User, {foreignKey: "userId", as: "user"});
 
 

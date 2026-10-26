@@ -76,7 +76,7 @@ AuthToken.init(
   {
     sequelize,
 
-    tableName: "authTokens",
+    tableName: "auth_tokens",
 
     timestamps: true,
   }
