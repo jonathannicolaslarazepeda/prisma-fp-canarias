@@ -26,7 +26,7 @@ export class User extends Model<
 
   declare failedLoginAttempts: CreationOptional<number>;
 
-  declare lockedUntil: CreationOptional<Date>;
+  declare lockedUntil: CreationOptional<Date | null>;
 
   declare createdAt: CreationOptional<Date>;
 

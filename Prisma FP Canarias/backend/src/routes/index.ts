@@ -5,6 +5,12 @@ import authTokenRoutes from "../modules/auth-tokens/auth-token.routes.js";
 import permissionRoutes from "../modules/permissions/permission.routes.js";
 import rolePermissionRoutes from "../modules/role-permissions/role-permission.routes.js";
 import roleUserRoutes from "../modules/role-users/role-user.routes.js";
+import educationalCenterRoutes from "../modules/educational-centers/educational-center.routes.js";
+import academicYearRoutes from "../modules/academic-years/academic-year.routes.js";
+import professionalFamilyRoutes from "../modules/professional-families/professional-family.routes.js";
+import trainingProgramRoutes from "../modules/training-programs/training-program.routes.js";
+import tutorAssignmentRoutes from "../modules/tutor-assignments/tutor-assignment.routes.js";
+import studentEnrollmentRoutes from "../modules/students-enrollments/student-enrollment.routes.js";
 
 
 const router = Router();
@@ -15,4 +21,14 @@ router.use("/role-users", roleUserRoutes);
 router.use("/role-permissions", rolePermissionRoutes);
 router.use("/auth-tokens", authTokenRoutes);
 
+router.use("/educational-centers", educationalCenterRoutes);
+router.use("/academic-years", academicYearRoutes);
+router.use("/professional-families", professionalFamilyRoutes);
+router.use("/training-programs", trainingProgramRoutes);
+router.use("/tutor-assignments", tutorAssignmentRoutes);
+router.use("/students-enrollments", studentEnrollmentRoutes);
+
+
 export default router;
+
+
