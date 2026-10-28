@@ -23,6 +23,10 @@ import { professionalFamily } from "../modules/professional-families/professiona
 import { trainingProgram } from "../modules/training-programs/training-program.model.js";
 import { tutorAssignment } from "../modules/tutor-assignments/tutor-assignment.model.js";
 import { studentEnrollment } from "../modules/students-enrollments/student-enrollment.model.js";
+// Pendiente: módulos Student y StudentEnrollment.
+// import { Student } from "../modules/students/student.model";
+// import { StudentEnrollment } from "../modules/student-enrollments/student-enrollment.model";
+
 
 export function defineAssociations() {
     Student.hasMany(StudentSkill, { foreignKey: "studentId", as: "studentSkills" });
@@ -50,10 +54,15 @@ export function defineAssociations() {
     ConsentRequest.hasMany(Consent, { foreignKey: "consentRequestId", as: "consents" });
     Consent.belongsTo(ConsentRequest, { foreignKey: "consentRequestId", as: "consentRequest" });
 
+    // Pendiente: activar cuando existan Student y StudentEnrollment.
+    // StudentEnrollment.hasMany(Internship, { foreignKey: "enrollmentId", as: "internships" });
+    // Internship.belongsTo(StudentEnrollment, { foreignKey: "enrollmentId", as: "enrollment" });
 
-// Pendiente: módulos Student y StudentEnrollment.
-// import { Student } from "../modules/students/student.model";
-// import { StudentEnrollment } from "../modules/student-enrollments/student-enrollment.model";
+    // Student.hasMany(EmploymentRecord, { foreignKey: "studentId", as: "employmentRecords" });
+    // EmploymentRecord.belongsTo(Student, { foreignKey: "studentId", as: "student" });
+
+    // Student.hasMany(SurveyInvitation, { foreignKey: "studentId", as: "surveyInvitations" });
+    // SurveyInvitation.belongsTo(Student, { foreignKey: "studentId", as: "student" });
 
 
     Company.hasMany(Internship, { foreignKey: "companyId", as: "internships" });
@@ -77,15 +86,6 @@ export function defineAssociations() {
     SurveyQuestion.hasMany(SurveyAnswer, { foreignKey: "questionId", as: "answers" });
     SurveyAnswer.belongsTo(SurveyQuestion, { foreignKey: "questionId", as: "question" });
 
-    // Pendiente: activar cuando existan Student y StudentEnrollment.
-    // StudentEnrollment.hasMany(Internship, { foreignKey: "enrollmentId", as: "internships" });
-    // Internship.belongsTo(StudentEnrollment, { foreignKey: "enrollmentId", as: "enrollment" });
-
-    // Student.hasMany(EmploymentRecord, { foreignKey: "studentId", as: "employmentRecords" });
-    // EmploymentRecord.belongsTo(Student, { foreignKey: "studentId", as: "student" });
-
-    // Student.hasMany(SurveyInvitation, { foreignKey: "studentId", as: "surveyInvitations" });
-    // SurveyInvitation.belongsTo(Student, { foreignKey: "studentId", as: "student" });
 
     
     // =========================
