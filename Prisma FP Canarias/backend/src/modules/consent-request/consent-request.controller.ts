@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { ConsentRequestService } from "./consent-request.service";
+import { ConsentRequestService } from "./consent-request.service.js";
 
 export class ConsentRequestController {
 

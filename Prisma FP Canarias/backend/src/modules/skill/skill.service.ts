@@ -1,4 +1,4 @@
-import { Skill } from "./skill.model";
+import { Skill } from "./skill.model.js";
 
 export class SkillService {
 

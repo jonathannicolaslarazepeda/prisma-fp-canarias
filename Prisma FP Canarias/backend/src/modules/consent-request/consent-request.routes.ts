@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ConsentRequestController } from "./consent-request.controller";
+import { ConsentRequestController } from "./consent-request.controller.js";
 
 const router = Router();
 

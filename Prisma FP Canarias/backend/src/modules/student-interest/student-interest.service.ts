@@ -1,5 +1,5 @@
-import { StudentInterest } from "./student-interest.model";
-import { Student } from "../student/student.model";
+import { StudentInterest } from "./student-interest.model.js";
+import { Student } from "../student/student.model.js";
 
 const includeStudent = {
   model: Student,

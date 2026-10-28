@@ -1,5 +1,5 @@
-import { ConsentRequest } from "./consent-request.model";
-import { Student } from "../student/student.model";
+import { ConsentRequest } from "./consent-request.model.js";
+import { Student } from "../student/student.model.js";
 
 const includeStudent = {
   model: Student,
