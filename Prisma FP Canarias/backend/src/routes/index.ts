@@ -1,4 +1,11 @@
 import { Router } from "express";
+import companyRoutes from "../modules/companies/company.routes";
+import internshipRoutes from "../modules/internships/internship.routes";
+import employmentRecordRoutes from "../modules/employment-records/employment-record.routes";
+import surveyRoutes from "../modules/surveys/survey.routes";
+import surveyQuestionRoutes from "../modules/survey-questions/survey-question.routes";
+import surveyInvitationRoutes from "../modules/survey-invitations/survey-invitation.routes";
+import surveyAnswerRoutes from "../modules/survey-answers/survey-answer.routes";
 import userRoutes from "../modules/users/user.routes.js";
 import roleRoutes from "../modules/roles/role.routes.js";
 import authTokenRoutes from "../modules/auth-tokens/auth-token.routes.js";
@@ -12,15 +19,20 @@ import trainingProgramRoutes from "../modules/training-programs/training-program
 import tutorAssignmentRoutes from "../modules/tutor-assignments/tutor-assignment.routes.js";
 import studentEnrollmentRoutes from "../modules/students-enrollments/student-enrollment.routes.js";
 
-
 const router = Router();
+router.use("/companies", companyRoutes);
+router.use("/internships", internshipRoutes);
+router.use("/employment-records", employmentRecordRoutes);
+router.use("/surveys", surveyRoutes);
+router.use("/survey-questions", surveyQuestionRoutes);
+router.use("/survey-invitations", surveyInvitationRoutes);
+router.use("/survey-answers", surveyAnswerRoutes);
 router.use("/users", userRoutes);
 router.use("/roles", roleRoutes);
 router.use("/permissions", permissionRoutes);
 router.use("/role-users", roleUserRoutes);
 router.use("/role-permissions", rolePermissionRoutes);
 router.use("/auth-tokens", authTokenRoutes);
-
 router.use("/educational-centers", educationalCenterRoutes);
 router.use("/academic-years", academicYearRoutes);
 router.use("/professional-families", professionalFamilyRoutes);
@@ -28,7 +40,4 @@ router.use("/training-programs", trainingProgramRoutes);
 router.use("/tutor-assignments", tutorAssignmentRoutes);
 router.use("/students-enrollments", studentEnrollmentRoutes);
 
-
 export default router;
-
-

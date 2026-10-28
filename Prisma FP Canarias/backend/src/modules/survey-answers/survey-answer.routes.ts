@@ -1,0 +1,20 @@
+import { Router } from "express";
+import { SurveyAnswerController } from "./survey-answer.controller";
+
+const router = Router();
+
+router.get("/", SurveyAnswerController.getAll);
+
+router.get("/eagerly", SurveyAnswerController.getAllEagerly);
+
+router.get("/eagerly/:id", SurveyAnswerController.getEagerlyById);
+
+router.get("/:id", SurveyAnswerController.getById);
+
+router.post("/", SurveyAnswerController.create);
+
+router.put("/:id", SurveyAnswerController.update);
+
+router.delete("/:id", SurveyAnswerController.delete);
+
+export default router;
