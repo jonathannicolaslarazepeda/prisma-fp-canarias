@@ -6,30 +6,35 @@ import {
   CreationOptional,
 } from "sequelize";
 
-import { sequelize } from "../../config/database";
+import { sequelize } from "../../config/database.js";
 
-export class tutorAssignment extends Model<
-  InferAttributes<tutorAssignment>,
-  InferCreationAttributes<tutorAssignment>
+export class studentEnrollment extends Model<
+  InferAttributes<studentEnrollment>,
+  InferCreationAttributes<studentEnrollment>
 > {
   declare id: CreationOptional<number>;
 
-  declare tutorId: number;
+  declare studentId: number;
 
   declare programId: number;
 
   declare academicYearId: number;
 
-  declare assignedAt: CreationOptional<Date>;
+  declare enrollmentDate: Date;
+
+  declare graduationDate: Date | null;
+
+  declare status: string;
 }
-tutorAssignment.init(
+
+studentEnrollment.init(
   {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
       primaryKey: true,
     },
-    tutorId: {
+    studentId: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
@@ -41,16 +46,24 @@ tutorAssignment.init(
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
-    assignedAt: {
-      type: DataTypes.DATE,
+    enrollmentDate: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+    },
+    graduationDate: {
+
+      type: DataTypes.DATEONLY,
+      allowNull: true,
+    },
+    status: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
     },
   },
   {
     sequelize,
-    tableName: "tutor_assignments",
-    modelName: "tutorAssignment",
+    tableName: "student_enrollments",
+    modelName: "studentEnrollment",
     timestamps: true,
   }
 );
