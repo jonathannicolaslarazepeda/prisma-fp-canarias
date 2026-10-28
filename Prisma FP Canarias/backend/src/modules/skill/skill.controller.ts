@@ -3,6 +3,7 @@ import { SkillService } from "./skill.service.js";
 
 export class SkillController {
 
+
   static async getAll(
     req: Request,
     res: Response,
@@ -25,7 +26,6 @@ export class SkillController {
   ) {
     try {
       const id = Number(req.params.id);
-
       const skill = await SkillService.findById(id);
 
       if (!skill) {
@@ -35,6 +35,7 @@ export class SkillController {
 
         return;
       }
+
 
       res.json(skill);
 
@@ -60,6 +61,7 @@ export class SkillController {
         return;
       }
 
+
       const skill = await SkillService.create({
         name,
         category,
@@ -67,6 +69,7 @@ export class SkillController {
       });
 
       res.status(201).json(skill);
+
 
     } catch (error) {
       next(error);
@@ -82,15 +85,18 @@ export class SkillController {
     try {
       const id = Number(req.params.id);
 
+
       const skill = await SkillService.findById(id);
 
       if (!skill) {
         res.status(404).json({
           message: "Competencia no encontrada",
+
         });
 
         return;
       }
+
 
       const updatedSkill = await SkillService.update(
         skill,
@@ -122,6 +128,7 @@ export class SkillController {
 
         return;
       }
+
 
       await SkillService.delete(skill);
 

@@ -1,3 +1,4 @@
+
 import { Request, Response, NextFunction } from "express";
 import { ConsentService } from "./consent.service.js";
 
@@ -24,6 +25,7 @@ export class ConsentController {
     next: NextFunction
   ) {
     try {
+
       const consents = await ConsentService.findAll();
 
       res.json(consents);
@@ -41,6 +43,7 @@ export class ConsentController {
     try {
       const id = Number(req.params.id);
 
+
       const consent = await ConsentService.findById(id);
 
       if (!consent) {
@@ -50,7 +53,6 @@ export class ConsentController {
 
         return;
       }
-
       res.json(consent);
 
     } catch (error) {
@@ -74,7 +76,6 @@ export class ConsentController {
 
         return;
       }
-
       const consent = await ConsentService.create({
         studentId,
         consentRequestId,
@@ -109,6 +110,7 @@ export class ConsentController {
 
         return;
       }
+
 
       const updatedConsent = await ConsentService.update(
         consent,
