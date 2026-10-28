@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const dotenv = require("dontenv");
+const dotenv = require("dotenv");
 
 function getConfig(environment) {
   let variables;
@@ -18,8 +18,8 @@ function getConfig(environment) {
     database: variables.DB_NAME,
     host: variables.DB_HOST,
     port: Number(variables.DB_PORT ?? 5432),
-    dialect: variables.DB_DIALECT,
-    loggig: false,
+    dialect: "postgres",
+    logging: false,
     migrationStorage: "sequelize",
     seederStorage: "sequelize"
   };
