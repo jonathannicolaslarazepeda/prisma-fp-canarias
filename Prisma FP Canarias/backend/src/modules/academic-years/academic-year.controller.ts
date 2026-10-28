@@ -36,7 +36,6 @@ export class academicYearController {
 
         return;
       }
-
       res.json(academicYear);
 
     } catch (error) {
@@ -124,7 +123,6 @@ export class academicYearController {
 
         return;
       }
-
       await academicYearService.delete(academicYear);
 
       res.status(204).send();

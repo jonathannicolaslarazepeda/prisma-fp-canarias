@@ -1,10 +1,16 @@
-import { Company } from "../modules/companies/company.model";
-import { Internship } from "../modules/internships/internship.model";
-import { EmploymentRecord } from "../modules/employment-records/employment-record.model";
-import { Survey } from "../modules/surveys/survey.model";
-import { SurveyQuestion } from "../modules/survey-questions/survey-question.model";
-import { SurveyInvitation } from "../modules/survey-invitations/survey-invitation.model";
-import { SurveyAnswer } from "../modules/survey-answers/survey-answer.model";
+import { Student } from "../modules/student/student.model.js";
+import { Skill } from "../modules/skill/skill.model.js";
+import { StudentSkill } from "../modules/student-skill/student-skill.model.js";
+import { StudentInterest } from "../modules/student-interest/student-interest.model.js";
+import { Consent } from "../modules/consent/consent.model.js";
+import { ConsentRequest } from "../modules/consent-request/consent-request.model.js";
+import { Company } from "../modules/companies/company.model.js";
+import { Internship } from "../modules/internships/internship.model.js";
+import { EmploymentRecord } from "../modules/employment-records/employment-record.model.js";
+import { Survey } from "../modules/surveys/survey.model.js";
+import { SurveyQuestion } from "../modules/survey-questions/survey-question.model.js";
+import { SurveyInvitation } from "../modules/survey-invitations/survey-invitation.model.js";
+import { SurveyAnswer } from "../modules/survey-answers/survey-answer.model.js";
 import { User } from "../modules/users/user.model.js";
 import { Role } from "../modules/roles/role.model.js";
 import { Permission } from "../modules/permissions/permission.model.js";
@@ -17,11 +23,39 @@ import { professionalFamily } from "../modules/professional-families/professiona
 import { trainingProgram } from "../modules/training-programs/training-program.model.js";
 import { tutorAssignment } from "../modules/tutor-assignments/tutor-assignment.model.js";
 import { studentEnrollment } from "../modules/students-enrollments/student-enrollment.model.js";
+
+export function defineAssociations() {
+    Student.hasMany(StudentSkill, { foreignKey: "studentId", as: "studentSkills" });
+    StudentSkill.belongsTo(Student, { foreignKey: "studentId", as: "student" });
+
+    Skill.hasMany(StudentSkill, { foreignKey: "skillId", as: "studentSkills" });
+    StudentSkill.belongsTo(Skill, { foreignKey: "skillId", as: "skill" });
+
+    Student.belongsToMany(Skill, {
+        through: StudentSkill, foreignKey: "studentId", otherKey: "skillId", as: "skills"
+    });
+    Skill.belongsToMany(Student, {
+        through: StudentSkill, foreignKey: "skillId", otherKey: "studentId", as: "students"
+    });
+
+    Student.hasMany(StudentInterest, { foreignKey: "studentId", as: "interests" });
+    StudentInterest.belongsTo(Student, { foreignKey: "studentId", as: "student" });
+
+    Student.hasMany(Consent, { foreignKey: "studentId", as: "consents" });
+    Consent.belongsTo(Student, { foreignKey: "studentId", as: "student" });
+
+    Student.hasMany(ConsentRequest, { foreignKey: "studentId", as: "consentRequests" });
+    ConsentRequest.belongsTo(Student, { foreignKey: "studentId", as: "student" });
+
+    ConsentRequest.hasMany(Consent, { foreignKey: "consentRequestId", as: "consents" });
+    Consent.belongsTo(ConsentRequest, { foreignKey: "consentRequestId", as: "consentRequest" });
+
+
 // Pendiente: módulos Student y StudentEnrollment.
 // import { Student } from "../modules/students/student.model";
 // import { StudentEnrollment } from "../modules/student-enrollments/student-enrollment.model";
 
-export function defineAssociations() {
+
     Company.hasMany(Internship, { foreignKey: "companyId", as: "internships" });
     Internship.belongsTo(Company, { foreignKey: "companyId", as: "company" });
 
