@@ -1,4 +1,4 @@
-import { Sequelize, type Dialect } from "sequelize";
+import { Dialect, Sequelize } from "sequelize";
 import { env } from "./env.js";
 
 export const sequelize = new Sequelize(
