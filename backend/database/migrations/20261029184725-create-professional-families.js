@@ -5,29 +5,29 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("professional_families", {
       id: {
-      type: Sequelize.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true,
-    },
+        type: Sequelize.INTEGER.UNSIGNED,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       name: {
-      type: Sequelize.STRING(150),
-      allowNull: false,
-      unique: true,
-    },
+        type: Sequelize.STRING(150),
+        allowNull: false,
+        unique: true,
+      },
       code: {
-      type: Sequelize.STRING(40),
-      allowNull: false,
-      unique: true,
-    },
+        type: Sequelize.STRING(40),
+        allowNull: false,
+        unique: true,
+      },
       description: {
-      type: Sequelize.TEXT,
-      allowNull: true,
-    },
-  })
-},
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+    })
+  },
 
 
   async down(queryInterface, Sequelize) {
-   await queryInterface.dropTable("professional_families");
+    await queryInterface.dropTable('professional_families');
   }
 };
