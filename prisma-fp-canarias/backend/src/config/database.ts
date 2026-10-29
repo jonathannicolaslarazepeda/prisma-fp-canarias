@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { Dialect, Sequelize } from "sequelize";
 import { env } from "./env.js";
+=======
+import { Sequelize } from "sequelize";
+import { env } from "./env";
+>>>>>>> develop
 
 export const sequelize = new Sequelize(
   env.DB_NAME,
@@ -8,6 +13,7 @@ export const sequelize = new Sequelize(
   {
     host: env.DB_HOST,
     port: env.DB_PORT,
+<<<<<<< HEAD
     dialect: env.DB_DIALECT as Dialect,
     define:  {
       underscored: true,
@@ -17,5 +23,9 @@ export const sequelize = new Sequelize(
       env.NODE_ENV === "development"
       ? console.log
       : false,
+=======
+    dialect: "mysql",
+    logging: false,
+>>>>>>> develop
   }
 );

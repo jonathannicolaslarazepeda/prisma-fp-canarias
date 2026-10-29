@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+
 import { RoleService } from "./role.service.js";
 
 export class RoleController {
@@ -9,9 +10,11 @@ export class RoleController {
     next: NextFunction
   ) {
     try {
+
       const roles = await RoleService.findAll();
 
       res.json(roles);
+
     } catch (error) {
       next(error);
     }
@@ -121,7 +124,6 @@ export class RoleController {
 
         return;
       }
-
       await RoleService.delete(role);
 
       res.status(204).send();
