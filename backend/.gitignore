@@ -1,3 +1,22 @@
+# dependencies
 node_modules/
-dist/
+**/node_modules/
+
+# Variables de entorno
 .env
+.env.*
+!.env.example
+!.env.development.example
+!.env.production.example
+
+# Compilación
+dist/
+build/
+coverage/
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
