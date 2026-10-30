@@ -1,6 +1,6 @@
-import { SurveyAnswer } from "./survey-answer.model";
-import { SurveyInvitation } from "../survey-invitations/survey-invitation.model";
-import { SurveyQuestion } from "../survey-questions/survey-question.model";
+import { SurveyAnswer } from "./survey-answer.model.js";
+import { SurveyInvitation } from "../survey-invitations/survey-invitation.model.js";
+import { SurveyQuestion } from "../survey-questions/survey-question.model.js";
 
 const includeInvitation = {
   model: SurveyInvitation,

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { EmploymentRecordService } from "./employment-record.service";
+import { EmploymentRecordService } from "./employment-record.service.js";
 
 export class EmploymentRecordController {
 

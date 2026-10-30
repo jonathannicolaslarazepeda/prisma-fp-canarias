@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { InternshipService } from "./internship.service";
+import { InternshipService } from "./internship.service.js";
 
 export class InternshipController {
 
