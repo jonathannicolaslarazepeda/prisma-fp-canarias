@@ -1,4 +1,4 @@
-import { Dialect, Sequelize } from "sequelize";
+import { Sequelize, type Dialect } from "sequelize";
 import { env } from "./env.js";
 
 export const sequelize = new Sequelize(
@@ -9,13 +9,13 @@ export const sequelize = new Sequelize(
     host: env.DB_HOST,
     port: env.DB_PORT,
     dialect: env.DB_DIALECT as Dialect,
-    define: {
+    define:  {
       underscored: true,
       freezeTableName: false,
     },
-    logging:
+    logging: 
       env.NODE_ENV === "development"
-        ? console.log
-        : false,
+      ? console.log
+      : false,
   }
 );

@@ -7,7 +7,7 @@ import {
   NonNullFindOptions,
 } from "sequelize";
 
-import { sequelize } from "../../config/database";
+import { sequelize } from "../../config/database.js";
 
 export class AuditLog extends Model<
   InferAttributes<AuditLog>,
