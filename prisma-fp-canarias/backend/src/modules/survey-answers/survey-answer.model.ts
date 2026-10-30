@@ -6,7 +6,7 @@ import {
   CreationOptional,
 } from "sequelize";
 
-import { sequelize } from "../../config/database";
+import { sequelize } from "../../config/database.js";
 
 export class SurveyAnswer extends Model<
   InferAttributes<SurveyAnswer>,
@@ -57,7 +57,7 @@ SurveyAnswer.init(
 
     modelName: "SurveyAnswer",
 
-    tableName: "survey-answers",
+    tableName: "survey_answers",
 
     timestamps: false,
   }
