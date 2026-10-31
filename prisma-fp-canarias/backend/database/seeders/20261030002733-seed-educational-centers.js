@@ -5,10 +5,10 @@ module.exports = {
     await queryInterface.bulkInsert('educational_centers', [
       {
         id: 1,
-        name: 'IES El Rincón',
-        code: '35009577',
+        name: 'IES Primero de Mayo',
+        code: '35009383',
         logo_url: 'logo.png',
-        address: 'Av. del Industrial José Sánchez Peñate, s/n, Las Palmas de Gran Canaria',
+        address: 'Av. Parque Central, s/n, 35013 Las Palmas de Gran Canaria',
         is_active: true
       }
     ], {});
@@ -25,10 +25,10 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-  await queryInterface.bulkDelete(
-    'educational_centers',
-    { id: 1 },
-    {}
-  );
-}
+    await queryInterface.bulkDelete(
+      'educational_centers',
+      { id: 1 },
+      {}
+    );
+  }
 };
