@@ -3,23 +3,31 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    const now = new Date();
+    await queryInterface.bulkInsert('role_permissions', [{
+      id: 1,
+      roleId: 1,
+      permissionId: 1
+    },{
+      id: 2,
+      roleId: 1,
+      permissionId: 2
+    }
+  ], {});
+
+    //Synchronous PostgreSQL autoincrement
+
+    if (queryInterface.sequelize.getDialect() === 'postgres') {
+      await queryInterface.sequelize.query(`
+    SELECT setval(
+      pg_get_serial_sequence('role_permissions', 'id'),
+      COALESCE((SELECT MAX(id) FROM role_permissions), 0) + 1,
+      FALSE);
+      `);
+    }
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('role_permissions', { id: [1] });
   }
 };
