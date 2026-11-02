@@ -1,0 +1,28 @@
+info:
+  name: http://localhost:3000/educational-centers
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:3000/educational-centers
+  body:
+    type: json
+    data: |+
+      
+      {
+        "name": "IES Primero de Mayo",
+        "code": "35009383",
+        "logo_url": "logo.png",
+        "address": "Av. Parque Central, s/n, 35013 Las Palmas de Gran Canaria",
+        "is_active": true
+      }
+
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
