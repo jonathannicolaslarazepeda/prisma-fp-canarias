@@ -6,7 +6,7 @@ import {
     CreationOptional
 } from "sequelize";
 
-import { sequelize } from "../../config/database";
+import { sequelize } from "../../config/database.js";
 
 export class RoleUser extends Model<
 InferAttributes<RoleUser>,
@@ -33,7 +33,7 @@ RoleUser.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        assignedAt: DataTypes.DATE,
+        assignedAt: {type: DataTypes.DATE},
     },
     {
         sequelize,
