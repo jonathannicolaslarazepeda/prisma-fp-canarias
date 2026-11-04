@@ -1,0 +1,27 @@
+info:
+  name: http://localhost:3000/educational-centers/1
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: http://localhost:3000/educational-centers/1
+  body:
+    type: json
+    data: |
+      
+      {
+        "name": "IES Primero de Mayo",
+        "code": "35009383",
+        "logo_url": "logo.png",
+        "address": "C/Milagrosa para aprobar",
+        "is_active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

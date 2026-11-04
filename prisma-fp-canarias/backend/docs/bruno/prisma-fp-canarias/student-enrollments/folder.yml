@@ -1,0 +1,7 @@
+info:
+  name: student-enrollments
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit
