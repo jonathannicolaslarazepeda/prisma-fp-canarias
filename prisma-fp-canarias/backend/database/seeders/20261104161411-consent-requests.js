@@ -23,11 +23,11 @@ const requests = [
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
-    await queryInterface.bulkInsert("consent-requests", requests);
+    await queryInterface.bulkInsert("consent_requests", requests);
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("consent-requests", {
+    await queryInterface.bulkDelete("consent_requests", {
       id: { [Sequelize.Op.in]: requests.map((r) => r.id) },
     });
   },

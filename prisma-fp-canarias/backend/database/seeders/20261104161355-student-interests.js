@@ -20,11 +20,11 @@ const interests = [
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
-    await queryInterface.bulkInsert("student-interests", interests);
+    await queryInterface.bulkInsert("student_interests", interests);
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("student-interests", {
+    await queryInterface.bulkDelete("student_interests", {
       id: { [Sequelize.Op.in]: interests.map((i) => i.id) },
     });
   },
