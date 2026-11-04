@@ -1,9 +1,9 @@
-import { Student } from "../modules/student/student.model.js";
-import { Skill } from "../modules/skill/skill.model.js";
-import { StudentSkill } from "../modules/student-skill/student-skill.model.js";
-import { StudentInterest } from "../modules/student-interest/student-interest.model.js";
-import { Consent } from "../modules/consent/consent.model.js";
-import { ConsentRequest } from "../modules/consent-request/consent-request.model.js";
+import { Student } from "../modules/students/student.model.js";
+import { Skill } from "../modules/skills/skill.model.js";
+import { StudentSkill } from "../modules/student-skills/student-skill.model.js";
+import { StudentInterest } from "../modules/student-interests/student-interest.model.js";
+import { Consent } from "../modules/consents/consent.model.js";
+import { ConsentRequest } from "../modules/consent-requests/consent-request.model.js";
 import { Company } from "../modules/companies/company.model.js";
 import { Internship } from "../modules/internships/internship.model.js";
 import { EmploymentRecord } from "../modules/employment-records/employment-record.model.js";

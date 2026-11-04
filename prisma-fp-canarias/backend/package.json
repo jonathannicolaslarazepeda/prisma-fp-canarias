@@ -12,13 +12,6 @@
     "build": "tsc",
     "start": "node dist/server.js"
   },
-<<<<<<< HEAD
-=======
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
->>>>>>> develop
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
