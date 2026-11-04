@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { SurveyAnswerService } from "./survey-answer.service";
+import { SurveyAnswerService } from "./survey-answer.service.js";
 
 export class SurveyAnswerController {
 

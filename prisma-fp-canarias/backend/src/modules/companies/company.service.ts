@@ -1,6 +1,6 @@
-import { Company } from "./company.model";
-import { Internship } from "../internships/internship.model";
-import { EmploymentRecord } from "../employment-records/employment-record.model";
+import { Company } from "./company.model.js";
+import { Internship } from "../internships/internship.model.js";
+import { EmploymentRecord } from "../employment-records/employment-record.model.js";
 
 const includeInternships = {
   model: Internship,

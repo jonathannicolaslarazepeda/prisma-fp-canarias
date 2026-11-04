@@ -6,7 +6,7 @@ import {
   CreationOptional,
 } from "sequelize";
 
-import { sequelize } from "../../config/database";
+import { sequelize } from "../../config/database.js";
 
 export class SurveyInvitation extends Model<
   InferAttributes<SurveyInvitation>,
@@ -40,7 +40,6 @@ SurveyInvitation.init(
       allowNull: false,
     },
 
-    // FK a Student (módulo pendiente).
     studentId: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
@@ -73,7 +72,7 @@ SurveyInvitation.init(
 
     modelName: "SurveyInvitation",
 
-    tableName: "survey-invitations",
+    tableName: "survey_invitations",
 
     timestamps: false,
   }

@@ -6,7 +6,7 @@ import {
   CreationOptional,
 } from "sequelize";
 
-import { sequelize } from "../../config/database";
+import { sequelize } from "../../config/database.js";
 
 export class Internship extends Model<
   InferAttributes<Internship>,
@@ -35,7 +35,6 @@ Internship.init(
       primaryKey: true,
     },
 
-    // FK a StudentEnrollment (módulo pendiente).
     enrollmentId: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,

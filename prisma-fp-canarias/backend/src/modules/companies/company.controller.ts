@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { CompanyService } from "./company.service";
+import { CompanyService } from "./company.service.js";
 
 export class CompanyController {
 

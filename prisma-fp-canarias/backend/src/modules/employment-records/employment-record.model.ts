@@ -6,7 +6,7 @@ import {
   CreationOptional,
 } from "sequelize";
 
-import { sequelize } from "../../config/database";
+import { sequelize } from "../../config/database.js";
 
 export class EmploymentRecord extends Model<
   InferAttributes<EmploymentRecord>,
@@ -39,7 +39,6 @@ EmploymentRecord.init(
       primaryKey: true,
     },
 
-    // FK a Student (módulo pendiente).
     studentId: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
@@ -86,7 +85,7 @@ EmploymentRecord.init(
 
     modelName: "EmploymentRecord",
 
-    tableName: "employment-records",
+    tableName: "employment_records",
 
     timestamps: false,
   }

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { SurveyQuestionController } from "./survey-question.controller";
+import { SurveyQuestionController } from "./survey-question.controller.js";
 
 const router = Router();
 
