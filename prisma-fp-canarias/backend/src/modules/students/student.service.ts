@@ -1,5 +1,5 @@
 import { Student } from "./student.model.js";
-import { StudentSkill } from "../student-skill/student-skill.model.js";
+import { StudentSkill } from "../student-skills/student-skill.model.js";
 import { Op } from "sequelize";
 
 export class StudentService {

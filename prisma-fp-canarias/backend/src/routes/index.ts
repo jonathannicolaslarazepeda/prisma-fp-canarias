@@ -1,10 +1,10 @@
 import { Router } from "express";
-import studentRoutes from "../modules/student/student.routes.js";
-import skillRoutes from "../modules/skill/skill.routes.js";
-import studentSkillRoutes from "../modules/student-skill/student-skill.routes.js";
-import studentInterestRoutes from "../modules/student-interest/student-interest.routes.js";
-import consentRoutes from "../modules/consent/consent.routes.js";
-import consentRequestRoutes from "../modules/consent-request/consent-request.routes.js";
+import studentRoutes from "../modules/students/student.routes.js";
+import skillRoutes from "../modules/skills/skill.routes.js";
+import studentSkillRoutes from "../modules/student-skills/student-skill.routes.js";
+import studentInterestRoutes from "../modules/student-interests/student-interest.routes.js";
+import consentRoutes from "../modules/consents/consent.routes.js";
+import consentRequestRoutes from "../modules/consent-requests/consent-request.routes.js";
 import companyRoutes from "../modules/companies/company.routes.js";
 import internshipRoutes from "../modules/internships/internship.routes.js";
 import employmentRecordRoutes from "../modules/employment-records/employment-record.routes.js";

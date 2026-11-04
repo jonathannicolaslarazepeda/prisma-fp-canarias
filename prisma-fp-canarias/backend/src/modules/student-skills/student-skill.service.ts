@@ -1,6 +1,6 @@
 import { StudentSkill } from "./student-skill.model.js";
-import { Student } from "../student/student.model.js";
-import { Skill } from "../skill/skill.model.js";
+import { Student } from "../students/student.model.js";
+import { Skill } from "../skills/skill.model.js";
 
 const includeStudent = {
   model: Student,
