@@ -20,7 +20,7 @@ module.exports = {
       consentRequestId: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: true,
-        references: { model: "consent-requests", key: "id" },
+        references: { model: "consent_requests", key: "id" },
         onUpdate: "CASCADE",
         onDelete: "SET NULL",
       },
