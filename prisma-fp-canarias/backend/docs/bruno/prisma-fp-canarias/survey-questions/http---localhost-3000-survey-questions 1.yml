@@ -1,0 +1,26 @@
+info:
+  name: http://localhost:3000/survey-questions
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://localhost:3000/survey-questions
+  body:
+    type: json
+    data: |-
+      {
+        "surveyId": 1,
+        "questionText": "Are you currently employed?",
+        "questionType": "text",
+        "sortOrder": 3,
+        "isRequired": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -1,0 +1,29 @@
+info:
+  name: http://localhost:3000/employment-records
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://localhost:3000/employment-records
+  body:
+    type: json
+    data: |-
+      {
+        "studentId": 1,
+        "companyId": 2,
+        "internshipId": null,
+        "position": "Data Analyst",
+        "sector": "Healthcare",
+        "startDate": "2026-10-01",
+        "endDate": null,
+        "isRelatedToStudies": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
