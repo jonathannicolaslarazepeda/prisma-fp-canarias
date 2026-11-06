@@ -10,6 +10,9 @@ http:
     type: json
     data: |
       {
+        "email" : "pruebapostear01@gmail.com",
+        "firstName" : "Nueno Usuario",
+        "lastName" : "Gutierrez"
       }
   auth: inherit
 

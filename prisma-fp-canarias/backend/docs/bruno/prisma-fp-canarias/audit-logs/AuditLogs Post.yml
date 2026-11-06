@@ -10,6 +10,9 @@ http:
     type: json
     data: |
       {
+        "userId": 3,
+        "token": "sample_token_3",
+        "expiresAt": "2026-11-07T15:00:00.000Z"
       }
   auth: inherit
 

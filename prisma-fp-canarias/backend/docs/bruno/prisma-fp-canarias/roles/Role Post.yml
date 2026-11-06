@@ -10,6 +10,8 @@ http:
     type: json
     data: |
       {
+        "name" : "Nuevo Rol",
+        "description" : "Nuevo Tipo de Rol",
       }
   auth: inherit
 

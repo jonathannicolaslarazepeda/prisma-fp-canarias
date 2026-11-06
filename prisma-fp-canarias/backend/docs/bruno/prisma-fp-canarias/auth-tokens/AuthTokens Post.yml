@@ -8,8 +8,19 @@ http:
   url: http://localhost:3000/auth-tokens
   body:
     type: json
-    data: |
+    data: |-
       {
+        "userId": 1,
+        "action": "CREATE",
+        "tableName": "users",
+        "recordId": 2,
+        "oldValues": null,
+        "newValues": {
+          "id": 2,
+          "username": "juan123",
+          "email": "juan@example.com",
+          "role": "user"
+        }
       }
   auth: inherit
 

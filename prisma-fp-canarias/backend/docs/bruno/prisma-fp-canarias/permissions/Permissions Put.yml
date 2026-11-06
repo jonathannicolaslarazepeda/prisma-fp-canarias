@@ -10,12 +10,8 @@ http:
     type: json
     data: |
       {
-        "studentId": 1,
-        "programId": 1,
-        "academicYearId": 1,
-        "enrollmentDate": "2025-09-01",
-        "graduationDate": "2026-06-30",
-        "status": "Graduado"
+       "name": "Permiso Editado",
+        "description" : "Tipo de Permiso Editado"
       }
   auth: inherit
 

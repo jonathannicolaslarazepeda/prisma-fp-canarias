@@ -10,6 +10,8 @@ http:
     type: json
     data: |
       {
+        "roleId" : 2, 
+        "permissionId" : 4
       }
   auth: inherit
 
