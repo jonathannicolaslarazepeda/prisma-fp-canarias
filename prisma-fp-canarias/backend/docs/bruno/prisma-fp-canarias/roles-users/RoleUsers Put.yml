@@ -1,0 +1,27 @@
+info:
+  name: RoleUsers Put
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/role-users/1
+  body:
+    type: json
+    data: |
+      {
+        "studentId": 1,
+        "programId": 1,
+        "academicYearId": 1,
+        "enrollmentDate": "2025-09-01",
+        "graduationDate": "2026-06-30",
+        "status": "Graduado"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
