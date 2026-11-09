@@ -1,0 +1,32 @@
+info:
+  name: AuthTokens Post
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:3000/auth-tokens
+  body:
+    type: json
+    data: |-
+      {
+        "userId": 1,
+        "action": "CREATE",
+        "tableName": "users",
+        "recordId": 2,
+        "oldValues": null,
+        "newValues": {
+          "id": 2,
+          "username": "juan123",
+          "email": "juan@example.com",
+          "role": "user"
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

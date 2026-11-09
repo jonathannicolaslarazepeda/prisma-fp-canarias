@@ -1,0 +1,25 @@
+info:
+  name: http://localhost:3000/academic-years/1
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: http://localhost:3000/academic-years/1
+  body:
+    type: json
+    data: |
+      {
+        "name": "2025-2026",
+        "startDate": "2025-09-01",
+        "endDate": "2026-06-30",
+        "isActive": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

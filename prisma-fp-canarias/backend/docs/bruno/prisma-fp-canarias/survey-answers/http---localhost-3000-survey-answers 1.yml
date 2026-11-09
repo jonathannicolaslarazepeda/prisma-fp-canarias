@@ -1,0 +1,25 @@
+info:
+  name: http://localhost:3000/survey-answers
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://localhost:3000/survey-answers
+  body:
+    type: json
+    data: |-
+      {
+        "invitationId": 2,
+        "questionId": 1,
+        "answerValue": "Green",
+        "answeredAt": "2026-11-06T10:30:00.000Z"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

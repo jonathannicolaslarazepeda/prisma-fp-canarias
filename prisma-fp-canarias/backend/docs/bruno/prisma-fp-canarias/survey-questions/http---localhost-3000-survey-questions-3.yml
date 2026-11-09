@@ -1,0 +1,26 @@
+info:
+  name: http://localhost:3000/survey-questions/3
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: http://localhost:3000/survey-questions/3
+  body:
+    type: json
+    data: |-
+      {
+        "surveyId": 1,
+        "questionText": "Are you currently working in your field?",
+        "questionType": "text",
+        "sortOrder": 4,
+        "isRequired": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
