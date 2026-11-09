@@ -1,0 +1,33 @@
+info:
+  name: AuthTokens Put
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/auth-tokens/1
+  body:
+    type: json
+    data: |
+      {
+        "userId": 1,
+        "action": "UPDATE",
+        "tableName": "users",
+        "recordId": 1,
+        "oldValues": {
+          "username": "juan123",
+          "email": "juan@example.com"
+        },
+        "newValues": {
+          "username": "juan_dev",
+          "email": "juan.dev@example.com"
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -1,0 +1,25 @@
+info:
+  name: http://localhost:3000/survey-answers/3
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: http://localhost:3000/survey-answers/3
+  body:
+    type: json
+    data: |-
+      {
+        "invitationId": 2,
+        "questionId": 1,
+        "answerValue": "Red",
+        "answeredAt": "2026-11-06T11:00:00.000Z"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

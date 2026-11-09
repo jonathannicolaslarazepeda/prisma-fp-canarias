@@ -1,0 +1,26 @@
+info:
+  name: http://localhost:3000/tutor-assignments/1
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/tutor-assignments/1
+  body:
+    type: json
+    data: |
+      
+      {
+        "tutorId": 1,
+        "programId": 1,
+        "academicYearId": 1,
+        "assignedAt": "2025-09-15"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

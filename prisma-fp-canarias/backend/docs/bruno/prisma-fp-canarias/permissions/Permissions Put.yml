@@ -1,0 +1,23 @@
+info:
+  name: Permissions Put
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/roles/1
+  body:
+    type: json
+    data: |
+      {
+       "name": "Permiso Editado",
+        "description" : "Tipo de Permiso Editado"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

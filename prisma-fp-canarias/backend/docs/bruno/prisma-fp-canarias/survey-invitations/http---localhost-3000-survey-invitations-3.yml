@@ -1,0 +1,27 @@
+info:
+  name: http://localhost:3000/survey-invitations/3
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: http://localhost:3000/survey-invitations/3
+  body:
+    type: json
+    data: |-
+      {
+        "surveyId": 2,
+        "studentId": 1,
+        "tokenHash": "token_hash_3",
+        "sentAt": "2026-11-06T10:00:00.000Z",
+        "expiresAt": "2026-11-13T10:00:00.000Z",
+        "completedAt": "2026-11-07T12:00:00.000Z"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

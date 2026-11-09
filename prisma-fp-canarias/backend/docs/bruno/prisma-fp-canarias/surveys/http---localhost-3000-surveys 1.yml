@@ -1,0 +1,24 @@
+info:
+  name: http://localhost:3000/surveys
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://localhost:3000/surveys
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Survey 3",
+        "description": "Description for Survey 3",
+        "isActive": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

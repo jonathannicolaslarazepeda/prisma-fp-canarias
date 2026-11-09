@@ -1,0 +1,27 @@
+info:
+  name: http://localhost:3000/training-programs/1
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: http://localhost:3000/training-programs/1
+  body:
+    type: json
+    data: |
+      {
+        "familyId": 1,
+        "centerId": 1,
+        "name": "Farmacia y Parafarmacia",
+        "code": "FARMACIA",
+        "level": "Grado Superior",
+        "isActive": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
