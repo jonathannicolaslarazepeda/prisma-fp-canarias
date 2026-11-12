@@ -12,6 +12,15 @@ module.exports = {
         enrollment_date: '2025-09-01',
         graduation_date: null,
         status: 'Matriculado'
+      },
+      {
+        id: 2,
+        student_id: 2,
+        program_id: 2,
+        academic_year_id: 1,
+        enrollment_date: '2025-09-01',
+        graduation_date: null,
+        status: 'Matriculado'
       }
     ], {});
 
@@ -27,10 +36,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete(
-      'student_enrollments',
-      { id: 1 },
-      {}
-    );
+    await queryInterface.bulkDelete('student_enrollments',{ id: [1, 2] });
   }
 };

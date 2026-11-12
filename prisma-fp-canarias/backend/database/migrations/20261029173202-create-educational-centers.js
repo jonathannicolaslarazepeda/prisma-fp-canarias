@@ -40,6 +40,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.droptTable('educational_centers');
+    await queryInterface.dropTable('educational_centers');
   }
 };

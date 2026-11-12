@@ -8,22 +8,20 @@ module.exports = {
       id: 1,
       user_id: 1,
       action: 'CREATE',
-      table_name: 'users',
-      record_id: 1,
-      old_values: null,
+      entity_type: 'users',
+      entity_id: 1,
+      previous_values: null,
       new_values: null,
-      created_at: now,
-      updated_at: now
+      created_at: now
     }, {
       id: 2,
       user_id: 2,
       action: 'UPDATE',
-      table_name: 'users',
-      record_id: 2,
-      old_values: null,
+      entity_type: 'users',
+      entity_id: 2,
+      previous_values: null,
       new_values: null,
-      created_at: now,
-      updated_at: now
+      created_at: now
     }
     ], {});
 
