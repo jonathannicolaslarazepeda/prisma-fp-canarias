@@ -10,7 +10,7 @@ module.exports = {
         primaryKey: true,
       },
       name: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: Sequelize.STRING(250),
         allowNull: false,
         unique: true,
       },
@@ -33,11 +33,13 @@ module.exports = {
         allowNull: false,
         defaultValue: true,
       },
+      created_at: { type: Sequelize.DATE },
+      updated_at: { type: Sequelize.DATE }
     })
 
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.droptTable('educational_centers');
+    await queryInterface.dropTable('educational_centers');
   }
 };

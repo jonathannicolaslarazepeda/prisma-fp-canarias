@@ -6,13 +6,13 @@ module.exports = {
     const now = new Date();
     await queryInterface.bulkInsert('role_users', [{
       id: 1,
-      userId: 1,
-      roleId: 1
+      user_id: 1,
+      role_id: 1
     },
     {
       id: 2,
-      userId: 2,
-      roleId: 2
+      user_id: 2,
+      role_id: 2
     }], {});
 
     //Synchronous PostgreSQL autoincrement

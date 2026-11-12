@@ -6,12 +6,12 @@ module.exports = {
     await queryInterface.bulkInsert('training_programs', [
       {
         id: 1,
-        familyId: 1,
-        centerId: 1,
+        family_id: 1,
+        center_id: 1,
         name: 'Farmacia y Parafarmacia',
         code: 'FARMACIA',
         level: 'Grado Medio',
-        isActive: true
+        is_active: true
       }
     ], {});
 

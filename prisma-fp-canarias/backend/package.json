@@ -14,7 +14,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "db:migrate": "cd database && sequelize-cli db:migrate",
-    "db:migrate:undo": "cd database && sequelize-cli db:migrate:undo",
+    "db:migrate:undo": "cd database && sequelize-cli db:migrate:undo:all",
     "db:migrate:status": "cd database && sequelize-cli db:migrate:status",
     "db:seed": "cd database && sequelize-cli db:seed:all",
     "db:seed:undo": "cd database && sequelize-cli db:seed:undo:all"

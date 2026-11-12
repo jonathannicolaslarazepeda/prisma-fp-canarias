@@ -4,7 +4,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("student_skills", {
-      studentId: {
+      student_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
         allowNull: false,
@@ -12,7 +12,7 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      skillId: {
+      skill_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
         allowNull: false,
@@ -20,14 +20,16 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
-      proficiencyLevel: {
+      proficiency_level: {
         type: Sequelize.STRING(50),
         allowNull: false,
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      created_at: { type: Sequelize.DATE },
+      updated_at: { type: Sequelize.DATE }
     });
   },
 

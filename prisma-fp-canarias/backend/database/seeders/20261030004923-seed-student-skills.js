@@ -12,11 +12,11 @@ const rows = [
   [6, 11, "intermediate"], [6, 10, "intermediate"],
   [7, 5, "advanced"], [7, 2, "advanced"], [7, 12, "intermediate"],
   [8, 3, "beginner"], [8, 9, "advanced"],
-].map(([studentId, skillId, proficiencyLevel]) => ({
-  studentId,
-  skillId,
-  proficiencyLevel,
-  updatedAt: now,
+].map(([student_id, skill_id, proficiency_level]) => ({
+  student_id,
+  skill_id,
+  proficiency_level: proficiency_level,
+  updated_at: now,
 }));
 
 /** @type {import('sequelize-cli').Migration} */
@@ -27,7 +27,7 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete("student_skills", {
-      studentId: { [Sequelize.Op.in]: [...new Set(rows.map((r) => r.studentId))] },
+      student_id: { [Sequelize.Op.in]: [...new Set(rows.map((r) => r.student_id))] },
     });
   },
 };

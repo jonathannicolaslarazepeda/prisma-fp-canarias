@@ -6,24 +6,22 @@ module.exports = {
     const now = new Date();
     await queryInterface.bulkInsert('audit_logs', [{
       id: 1,
-      userId: 1,
+      user_id: 1,
       action: 'CREATE',
-      tableName: 'users',
-      recordId: 1,
-      oldValues: null,
-      newValues: null,
-      createdAt: now,
-      updatedAt: now
+      entity_type: 'users',
+      entity_id: 1,
+      previous_values: null,
+      new_values: null,
+      created_at: now
     }, {
       id: 2,
-      userId: 2,
+      user_id: 2,
       action: 'UPDATE',
-      tableName: 'users',
-      recordId: 2,
-      oldValues: null,
-      newValues: null,
-      createdAt: now,
-      updatedAt: now
+      entity_type: 'users',
+      entity_id: 2,
+      previous_values: null,
+      new_values: null,
+      created_at: now
     }
     ], {});
 
@@ -32,8 +30,8 @@ module.exports = {
     if (queryInterface.sequelize.getDialect() === 'postgres') {
       await queryInterface.sequelize.query(`
     SELECT setval(
-      pg_get_serial_sequence('auth_tokens', 'id'),
-      COALESCE((SELECT MAX(id) FROM auth_tokens), 0) + 1,
+      pg_get_serial_sequence('audit_logs', 'id'),
+      COALESCE((SELECT MAX(id) FROM audit_logs), 0) + 1,
       FALSE);
       `);
     }

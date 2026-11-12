@@ -20,6 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
       },
+      assigned_at: { type: Sequelize.DATE },
   })},
 
       async down(queryInterface, Sequelize) {
