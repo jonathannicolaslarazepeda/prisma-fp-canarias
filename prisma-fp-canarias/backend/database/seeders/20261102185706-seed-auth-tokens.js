@@ -6,18 +6,18 @@ module.exports = {
     const now = new Date();
     await queryInterface.bulkInsert('auth_tokens', [{
       id: 1,
-      userId: 1,
+      user_id: 1,
       token: 'sample_token_1',
-      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
-      createdAt: now,
-      updatedAt: now
+      expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      created_at: now,
+      updated_at: now
     },{
       id: 2,
-      userId: 2,
+      user_id: 2,
       token: 'sample_token_2',
-      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
-      createdAt: now,
-      updatedAt: now
+      expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      created_at: now,
+      updated_at: now
     }
   ], {});
 

@@ -10,7 +10,7 @@ module.exports = {
         primaryKey: true,
       },
       name: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: Sequelize.STRING(250),
         allowNull: false,
         unique: true,
       },
@@ -33,6 +33,8 @@ module.exports = {
         allowNull: false,
         defaultValue: true,
       },
+      created_at: { type: Sequelize.DATE },
+      updated_at: { type: Sequelize.DATE }
     })
 
   },

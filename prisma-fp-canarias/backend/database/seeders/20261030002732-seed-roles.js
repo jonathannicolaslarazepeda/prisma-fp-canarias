@@ -8,15 +8,15 @@ module.exports = {
       id: 1,
       name: 'Admin',
       description: 'Administrator role with full access',
-      createdAt: now,
-      updatedAt: now
+      created_at: now,
+      updated_at: now
     },
     {
       id: 2,
       name: 'User',
       description: 'Regular user role with limited access',
-      createdAt: now,
-      updatedAt: now
+      created_at: now,
+      updated_at: now
     }], {});
 
     //Synchronous PostgreSQL autoincrement

@@ -10,17 +10,15 @@ const hash = (seed) =>
 
 // sentById references a user (users.id); ids 100 and 101 are used here as an example.
 const requests = [
-  { id: 1, studentId: 1, sentById: 100, sentAt: new Date(now - 10 * day), expiresAt: new Date(now + 20 * day), usedAt: new Date(now - 9 * day) },
-  { id: 2, studentId: 2, sentById: 100, sentAt: new Date(now - 10 * day), expiresAt: new Date(now + 20 * day), usedAt: new Date(now - 8 * day) },
-  { id: 3, studentId: 3, sentById: 100, sentAt: new Date(now - 7 * day), expiresAt: new Date(now + 23 * day), usedAt: new Date(now - 6 * day) },
-  { id: 4, studentId: 4, sentById: 101, sentAt: new Date(now - 7 * day), expiresAt: new Date(now + 23 * day), usedAt: new Date(now - 5 * day) },
-  { id: 5, studentId: 5, sentById: 101, sentAt: new Date(now - 3 * day), expiresAt: new Date(now + 27 * day), usedAt: null },
-  { id: 6, studentId: 6, sentById: 101, sentAt: new Date(now - 45 * day), expiresAt: new Date(now - 15 * day), usedAt: null },
-  { id: 7, studentId: 7, sentById: 100, sentAt: new Date(now - 2 * day), expiresAt: new Date(now + 28 * day), usedAt: new Date(now - 1 * day) },
-  { id: 8, studentId: 8, sentById: 100, sentAt: new Date(now - 1 * day), expiresAt: new Date(now + 29 * day), usedAt: null },
-].map((r) => ({ ...r, tokenHash: hash(r.id) }));
-
-/** @type {import('sequelize-cli').Migration} */
+  { id: 1, student_id: 1, sent_by_id: 100, sent_at: new Date(now - 10 * day), expires_at: new Date(now + 20 * day), used_at: new Date(now - 9 * day) },
+  { id: 2, student_id: 2, sent_by_id: 100, sent_at: new Date(now - 10 * day), expires_at: new Date(now + 20 * day), used_at: new Date(now - 8 * day) },
+  { id: 3, student_id: 3, sent_by_id: 100, sent_at: new Date(now - 7 * day), expires_at: new Date(now + 23 * day), used_at: new Date(now - 6 * day) },
+  { id: 4, student_id: 4, sent_by_id: 101, sent_at: new Date(now - 7 * day), expires_at: new Date(now + 23 * day), used_at: new Date(now - 5 * day) },
+  { id: 5, student_id: 5, sent_by_id: 101, sent_at: new Date(now - 3 * day), expires_at: new Date(now + 27 * day), used_at: null },
+  { id: 6, student_id: 6, sent_by_id: 101, sent_at: new Date(now - 45 * day), expires_at: new Date(now - 15 * day), used_at: null },
+  { id: 7, student_id: 7, sent_by_id: 100, sent_at: new Date(now - 2 * day), expires_at: new Date(now + 28 * day), used_at: null },
+  { id: 8, student_id: 8, sent_by_id: 100, sent_at: new Date(now - 1 * day), expires_at: new Date(now + 29 * day), used_at: null },
+].map((r) => ({ ...r, token_hash: hash(r.id) }));
 module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert("consent_requests", requests);

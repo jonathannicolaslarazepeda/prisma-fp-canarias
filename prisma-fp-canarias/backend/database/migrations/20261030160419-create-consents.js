@@ -10,14 +10,14 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
-      studentId: {
+      student_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
         references: { model: "students", key: "id" },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      consentRequestId: {
+      consent_request_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: true,
         references: { model: "consent_requests", key: "id" },
@@ -32,15 +32,17 @@ module.exports = {
         type: Sequelize.STRING(50),
         allowNull: false,
       },
-      policyVersion: {
+      policy_version: {
         type: Sequelize.STRING(50),
         allowNull: false,
       },
-      recordedAt: {
+      recorded_at: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
+      created_at: { type: Sequelize.DATE },
+      updated_at: { type: Sequelize.DATE }
     });
   },
 

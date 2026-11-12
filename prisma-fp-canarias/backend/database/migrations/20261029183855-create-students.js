@@ -11,20 +11,20 @@ module.exports = {
         allowNull: false,
       },
       
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
       },
-      nationalId: {
+      national_id: {
         type: Sequelize.STRING(30),
         allowNull: false,
         unique: true,
       },
-      firstName: {
+      first_name: {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
-      lastName: {
+      last_name: {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
@@ -36,18 +36,20 @@ module.exports = {
         type: Sequelize.STRING(30),
         allowNull: true,
       },
-      birthDate: {
+      birth_date: {
         type: Sequelize.DATEONLY,
         allowNull: true,
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      created_at: { type: Sequelize.DATE },
+      updated_at: { type: Sequelize.DATE }
     });
   },
 
