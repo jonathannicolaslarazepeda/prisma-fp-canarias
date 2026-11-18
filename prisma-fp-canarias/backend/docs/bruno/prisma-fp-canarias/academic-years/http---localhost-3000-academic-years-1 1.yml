@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "\thttp://localhost:3000/academic-years/1"
+  url: http://localhost:3000/api/academic-years/1
   auth: inherit
 
 settings:

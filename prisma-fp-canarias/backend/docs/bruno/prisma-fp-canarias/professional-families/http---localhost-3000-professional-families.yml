@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: http://localhost:3000/professional-families
+  url: http://localhost:3000/api/professional-families
   auth: inherit
 
 settings:

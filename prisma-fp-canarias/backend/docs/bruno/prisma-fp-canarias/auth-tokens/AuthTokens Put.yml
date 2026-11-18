@@ -5,7 +5,7 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/auth-tokens/1
+  url: http://localhost:3000/api/auth-tokens/1
   body:
     type: json
     data: |

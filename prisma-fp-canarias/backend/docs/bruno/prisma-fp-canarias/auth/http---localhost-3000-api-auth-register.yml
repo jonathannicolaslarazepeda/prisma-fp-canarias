@@ -1,0 +1,17 @@
+info:
+  name: http://localhost:3000/api/auth/register
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/api/auth/register
+  auth:
+    type: bearer
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

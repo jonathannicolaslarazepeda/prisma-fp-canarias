@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: http://localhost:3000/employment-records
+  url: http://localhost:3000/api/employment-records
   auth: inherit
 
 settings:
