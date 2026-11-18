@@ -1,4 +1,4 @@
-import { RolePermission } from "./role-permission.model.js";
+import { RolePermission } from "../rbac/role-permission.model.js";
 
 export class RolePermissionService {
 

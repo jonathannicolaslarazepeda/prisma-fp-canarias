@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { User } from "../modules/users/user.model.js";
+import { User } from "../modules/auth/user.model.js";
 
 export async function bearerAuth(
   req: Request,

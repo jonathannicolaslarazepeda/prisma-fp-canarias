@@ -2,9 +2,9 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import { User } from "../users/user.model.js";
-import { Role } from "../roles/role.model.js";
-import { RoleUser } from "../role-users/role-user.model.js";
+import { User } from "./user.model.js";
+import { Role } from "../rbac/role.model.js";
+import { RoleUser } from "../rbac/role-user.model.js";
 import { sequelize } from "../../config/database.js";
 import { env } from "../../config/env.js";
 
