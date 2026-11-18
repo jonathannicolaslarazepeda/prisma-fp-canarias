@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { User } from "../modules/users/user.model.js";
-import { env } from "../config/env.js";
 
 export async function bearerAuth(
   req: Request,
@@ -16,8 +15,7 @@ export async function bearerAuth(
   }
 
   const token = authorization.split(" ")[1];
-  const secret = env.JWT_SECRET;
-
+  const secret = process.env.JWT_SECRET;
   if (!secret) {
     next(new Error("JWT_SECRET not configured"));
     return;
@@ -36,17 +34,12 @@ export async function bearerAuth(
     }
 
     const payload = decoded as JwtPayload;
-
     const user = await User.findByPk(payload.sub);
 
     if (!user) {
       res.status(401).json({ message: "User not found" });
       return;
     }
-
-    res.locals.authUser = {
-      user
-    };
 
     next();
   } catch (error) {
