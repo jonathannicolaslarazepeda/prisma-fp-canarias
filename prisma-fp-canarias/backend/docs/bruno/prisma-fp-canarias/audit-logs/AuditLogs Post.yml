@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: http://localhost:3000/audit-logs
+  url: http://localhost:3000/api/audit-logs
   body:
     type: json
     data: |

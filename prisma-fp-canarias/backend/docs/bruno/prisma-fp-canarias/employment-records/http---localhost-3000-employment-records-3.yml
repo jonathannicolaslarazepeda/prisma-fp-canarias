@@ -5,7 +5,7 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:3000/employment-records/3
+  url: http://localhost:3000/api/employment-records/3
   body:
     type: json
     data: |-

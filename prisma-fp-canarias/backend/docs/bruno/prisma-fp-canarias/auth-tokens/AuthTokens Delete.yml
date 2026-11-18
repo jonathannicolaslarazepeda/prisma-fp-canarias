@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: http://localhost:3000/auth-tokens/1
+  url: http://localhost:3000/api/auth-tokens/1
   auth: inherit
 
 settings:
