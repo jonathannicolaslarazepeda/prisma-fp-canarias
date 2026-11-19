@@ -10,7 +10,7 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
-      studentId: {
+      student_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
         references: { model: "students", key: "id" },
@@ -18,28 +18,30 @@ module.exports = {
         onDelete: "CASCADE",
       },
       
-      sentById: {
+      sent_by_id: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
       },
-      tokenHash: {
+      token_hash: {
         type: Sequelize.STRING(255),
         allowNull: false,
         unique: true,
       },
-      sentAt: {
+      sent_at: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
-      expiresAt: {
+      expires_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      usedAt: {
+      used_at: {
         type: Sequelize.DATE,
         allowNull: true,
       },
+      created_at: { type: Sequelize.DATE },
+      updated_at: { type: Sequelize.DATE }
     });
   },
 

@@ -6,10 +6,10 @@ module.exports = {
     await queryInterface.bulkInsert('tutor_assignments', [
       {
         id: 1,
-        tutorId: 1,
-        programId: 1,
-        academicYearId: 1,
-        assignedAt: new Date('2025-09-01')
+        tutor_id: 1,
+        program_id: 1,
+        academic_year_id: 1,
+        assigned_at: new Date('2025-09-01')
       }
     ], {});
 

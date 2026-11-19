@@ -1,8 +1,11 @@
 
 import { Router } from "express";
 import { academicYearController } from "./academic-year.controller.js";
+import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
 
 const router = Router();
+
+router.use(bearerAuth);
 
 router.get("/", academicYearController.getAll);
 

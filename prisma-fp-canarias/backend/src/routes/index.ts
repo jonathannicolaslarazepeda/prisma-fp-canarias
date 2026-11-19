@@ -24,8 +24,11 @@ import professionalFamilyRoutes from "../modules/professional-families/professio
 import trainingProgramRoutes from "../modules/training-programs/training-program.routes.js";
 import tutorAssignmentRoutes from "../modules/tutor-assignments/tutor-assignment.routes.js";
 import studentEnrollmentRoutes from "../modules/students-enrollments/student-enrollment.routes.js";
+import authRoutes from "../modules/auth/auth.routes.js";
 
 const router = Router();
+
+
 router.use("/companies", companyRoutes);
 router.use("/internships", internshipRoutes);
 router.use("/employment-records", employmentRecordRoutes);
@@ -51,5 +54,7 @@ router.use("/student-skills", studentSkillRoutes);
 router.use("/student-interests", studentInterestRoutes);
 router.use("/consents", consentRoutes);
 router.use("/consent-requests", consentRequestRoutes);
+
+router.use("/auth", authRoutes);
 
 export default router;

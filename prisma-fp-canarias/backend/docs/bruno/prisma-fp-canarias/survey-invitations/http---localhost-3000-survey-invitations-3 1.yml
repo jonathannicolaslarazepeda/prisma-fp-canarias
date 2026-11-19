@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: http://localhost:3000/survey-invitations/3
+  url: http://localhost:3000/api/survey-invitations/3
   auth: inherit
 
 settings:

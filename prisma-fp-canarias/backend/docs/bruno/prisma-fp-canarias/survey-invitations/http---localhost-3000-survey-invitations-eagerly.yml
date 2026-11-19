@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: http://localhost:3000/survey-invitations/eagerly
+  url: http://localhost:3000/api/survey-invitations/eagerly
   auth: inherit
 
 settings:

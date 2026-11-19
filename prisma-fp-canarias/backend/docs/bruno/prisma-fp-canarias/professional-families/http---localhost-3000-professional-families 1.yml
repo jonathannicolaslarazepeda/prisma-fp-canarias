@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "URL: http://localhost:3000/professional-families"
+  url: "URL: http://localhost:3000/api/professional-families"
   body:
     type: json
     data: |
