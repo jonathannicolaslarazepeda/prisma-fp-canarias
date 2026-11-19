@@ -22,6 +22,7 @@ import "./modules/rbac/permission.model.js";
 import "./modules/rbac/role-user.model.js";
 import "./modules/rbac/role-permission.model.js";
 import "./modules/auth-tokens/auth-token.model.js";
+import "./modules/students/student.model.js";
 
 // Educational models
 import "./modules/academic-years/academic-year.model.js";
@@ -30,6 +31,7 @@ import "./modules/professional-families/professional-family.model.js";
 import "./modules/students-enrollments/student-enrollment.model.js";
 import "./modules/training-programs/training-program.model.js";
 import "./modules/tutor-assignments/tutor-assignment.model.js";
+import "./modules/student-skills/student-skill.model.js";
 
 async function startServer() {
     try {

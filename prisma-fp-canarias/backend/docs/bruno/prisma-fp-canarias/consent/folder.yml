@@ -1,0 +1,7 @@
+info:
+  name: consent
+  type: folder
+  seq: 25
+
+request:
+  auth: inherit

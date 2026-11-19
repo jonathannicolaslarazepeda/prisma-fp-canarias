@@ -1,0 +1,26 @@
+info:
+  name: Post Students
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:3000/api/students
+  body:
+    type: json
+    data: |-
+      {
+      "userId": 68,
+      "nationalId" : "1231294G",
+      "firstName" : "lolo",
+      "lastName" : "Prueba Postear",
+      "email" : "pruebapostear024@gmail.com" 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
