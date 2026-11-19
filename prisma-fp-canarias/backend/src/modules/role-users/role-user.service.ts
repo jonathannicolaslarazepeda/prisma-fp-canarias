@@ -1,6 +1,6 @@
-import { RoleUser } from "./role-user.model";
-import { User } from "../users/user.model";
-import { Role } from "../roles/role.model";
+import { RoleUser } from "../rbac/role-user.model.js";
+import { User } from "../auth/user.model.js";
+import { Role } from "../rbac/role.model.js";
 
 const includeRole = {
   model: Role,

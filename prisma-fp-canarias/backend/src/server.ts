@@ -16,11 +16,11 @@ import "./modules/survey-invitations/survey-invitation.model.js";
 import "./modules/survey-answers/survey-answer.model.js";
 
 // User and permission models
-import "./modules/users/user.model.js";
-import "./modules/roles/role.model.js";
-import "./modules/permissions/permission.model.js";
-import "./modules/role-users/role-user.model.js";
-import "./modules/role-permissions/role-permission.model.js";
+import "./modules/auth/user.model.js";
+import "./modules/rbac/role.model.js";
+import "./modules/rbac/permission.model.js";
+import "./modules/rbac/role-user.model.js";
+import "./modules/rbac/role-permission.model.js";
 import "./modules/auth-tokens/auth-token.model.js";
 import "./modules/students/student.model.js";
 

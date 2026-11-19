@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { User } from "../modules/users/user.model.js";
+import { User } from "../modules/auth/user.model.js";
 
 export async function bearerAuth(
   req: Request,
+  
   res: Response,
   next: NextFunction
 ): Promise<void> {
@@ -40,6 +41,9 @@ export async function bearerAuth(
       res.status(401).json({ message: "User not found" });
       return;
     }
+
+    //anythig inside locals allows to share information between middlewares and controllers
+    res.locals.authUser = { user };
 
     next();
   } catch (error) {

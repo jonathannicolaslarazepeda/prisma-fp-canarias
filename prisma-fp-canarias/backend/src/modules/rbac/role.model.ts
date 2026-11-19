@@ -7,6 +7,7 @@ import {
 } from "sequelize";
 
 import { sequelize } from "../../config/database.js";
+import { Permission } from "./permission.model.js";
 
 export class Role extends Model<
   InferAttributes<Role>,
@@ -18,6 +19,7 @@ export class Role extends Model<
 
   declare description: string;
 
+  declare permissions?: Permission[];
 }
 
 Role.init(
