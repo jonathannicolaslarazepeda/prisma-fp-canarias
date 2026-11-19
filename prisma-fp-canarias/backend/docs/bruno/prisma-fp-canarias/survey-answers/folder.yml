@@ -1,7 +1,7 @@
 info:
   name: survey-answers
   type: folder
-  seq: 11
+  seq: 16
 
 request:
   auth: inherit

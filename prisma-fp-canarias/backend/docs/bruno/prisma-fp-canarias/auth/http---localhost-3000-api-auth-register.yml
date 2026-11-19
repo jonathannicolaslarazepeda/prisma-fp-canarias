@@ -7,7 +7,9 @@ http:
   method: POST
   url: http://localhost:3000/api/auth/register
   auth:
-    type: bearer
+    type: basic
+    username: ejemplo@ejemplo.com
+    password: "12345678"
 
 settings:
   encodeUrl: true

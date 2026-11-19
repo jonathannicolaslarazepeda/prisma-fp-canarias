@@ -6,15 +6,29 @@ module.exports = {
     const now = new Date();
     await queryInterface.bulkInsert('roles', [{
       id: 1,
-      name: 'Admin',
-      description: 'Administrator role with full access',
+      name: 'Administrator IT',
+      description: 'Administrator IT role with full access to the system',
       created_at: now,
       updated_at: now
     },
     {
       id: 2,
       name: 'User',
-      description: 'Regular user role with limited access',
+      description: 'User without role asigned with limited access to the system',
+      created_at: now,
+      updated_at: now
+    },
+    {
+      id: 3,
+      name: 'Tutor',
+      description: 'Tutor role with limited access to the system',
+      created_at: now,
+      updated_at: now
+    },
+    {
+      id: 4,
+      name : 'Administrator College',
+      description: 'Administrator College role with limitedaccess to the system',
       created_at: now,
       updated_at: now
     }], {});

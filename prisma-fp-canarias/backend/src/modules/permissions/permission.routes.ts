@@ -1,19 +1,20 @@
 import { Router } from "express";
 import { PermissionController } from "./permission.controller.js";
 import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
+import { authorize } from "../rbac/authorize.middleware.js";
 
 const router = Router();
 
 router.use(bearerAuth);
 
-router.get("/", PermissionController.getAll);
+router.get("/", authorize('permission:read'), PermissionController.getAll);
 
-router.get("/:id", PermissionController.getById);
+router.get("/:id", authorize('permission:read'), PermissionController.getById);
 
-router.post("/", PermissionController.create);
+router.post("/", authorize('permission:create'), PermissionController.create);
 
-router.put("/:id", PermissionController.update);
+router.put("/:id", authorize('permission:update'), PermissionController.update);
 
-router.delete("/:id", PermissionController.delete);
+router.delete("/:id", authorize('permission:delete'), PermissionController.delete);
 
 export default router;

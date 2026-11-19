@@ -1,7 +1,7 @@
 info:
   name: role-permissions
   type: folder
-  seq: 11
+  seq: 15
 
 request:
   auth: inherit

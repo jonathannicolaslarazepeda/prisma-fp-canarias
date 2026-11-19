@@ -6,7 +6,9 @@ info:
 http:
   method: GET
   url: http://localhost:3000/api/roles/1
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3OTUxMTQ3ODYsImV4cCI6MTc5NTExODM4NiwiYXVkIjoicHJpc21hLWZwLWNhbmFyaWFzLWNsaWVudCIsImlzcyI6InByaXNtYS1mcC1jYW5hcmlhcy1hcGkiLCJzdWIiOiIxIn0.P_MnI6YDwFRWkl3e6JE5PstXxM9z2eeyIT0lVFbN_cs
 
 settings:
   encodeUrl: true
