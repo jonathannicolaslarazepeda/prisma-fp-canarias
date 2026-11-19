@@ -1,0 +1,25 @@
+info:
+  name: Put Student Skills
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/student-skills/1/1
+  body:
+    type: json
+    data: |-
+      {
+          "studentId": 2,
+          "skillId": 1,
+          "proficiencyLevel": "medium",
+          "updatedAt": "2026-11-18T16:43:09.903Z"
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

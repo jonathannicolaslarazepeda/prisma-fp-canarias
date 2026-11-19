@@ -51,7 +51,7 @@ StudentInterest.init(
 
     modelName: "StudentInterest",
 
-    tableName: "student-interests",
+    tableName: "student_interests",
 
     timestamps: false,
   }

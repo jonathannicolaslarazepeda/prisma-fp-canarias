@@ -1,0 +1,26 @@
+info:
+  name: Put Students
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/students/9
+  body:
+    type: json
+    data: |-
+      {
+      "userId": 9,
+      "nationalId" : "1231234G",
+      "firstName" : "Aleman",
+      "lastName" : "Prueba Postear",
+      "email" : "pruebapostear024@gmail.com" 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
