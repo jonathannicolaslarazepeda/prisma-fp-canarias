@@ -74,7 +74,7 @@ ConsentRequest.init(
 
     modelName: "ConsentRequest",
 
-    tableName: "consent-requests",
+    tableName: "consent_requests",
 
     timestamps: false,
   }

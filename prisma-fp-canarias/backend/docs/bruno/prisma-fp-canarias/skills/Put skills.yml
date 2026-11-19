@@ -1,0 +1,25 @@
+info:
+  name: Put skills
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/skills/1
+  body:
+    type: json
+    data: |-
+      {
+          "id": 10,
+          "name": "Ahahaha",
+          "category": "Aha",
+          "description": "Typed superset of JavaScript."
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

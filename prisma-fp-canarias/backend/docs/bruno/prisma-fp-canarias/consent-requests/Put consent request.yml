@@ -1,0 +1,28 @@
+info:
+  name: Put consent request
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/consent-requests/1
+  body:
+    type: json
+    data: |-
+      {
+        "id": 1,
+        "studentId": 2,
+        "sentById": 100,
+        "tokenHash": "c455452ba64ac13271a6b94e8dde90ecb5550243f4222bc19f4f1934566ac19a",
+        "sentAt": "2026-11-08T16:43:09.935Z",
+        "expiresAt": "2026-12-08T16:43:09.935Z",
+        "usedAt": "2026-11-09T16:43:09.935Z"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
