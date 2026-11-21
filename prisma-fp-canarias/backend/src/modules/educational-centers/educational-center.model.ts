@@ -34,7 +34,7 @@ educationalCenter.init(
             primaryKey: true,
         },
         name: {
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: DataTypes.STRING(255),
             allowNull: false,
             unique: true,
         },

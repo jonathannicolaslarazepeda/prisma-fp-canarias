@@ -23,6 +23,7 @@ import { professionalFamily } from "../modules/professional-families/professiona
 import { trainingProgram } from "../modules/training-programs/training-program.model.js";
 import { tutorAssignment } from "../modules/tutor-assignments/tutor-assignment.model.js";
 import { studentEnrollment } from "../modules/students-enrollments/student-enrollment.model.js";
+import { examenAudit } from "../modules/examen-audits/examen-audit.model.js";
 // Pendiente: módulos Student y StudentEnrollment.
 // import { Student } from "../modules/students/student.model";
 // import { StudentEnrollment } from "../modules/student-enrollments/student-enrollment.model";
@@ -87,7 +88,7 @@ export function defineAssociations() {
     SurveyAnswer.belongsTo(SurveyQuestion, { foreignKey: "questionId", as: "question" });
 
 
-    
+
     // =========================
     // USER <-> USER ROLE
     // =========================
@@ -183,5 +184,13 @@ export function defineAssociations() {
     });
     studentEnrollment.belongsTo(academicYear, {
         foreignKey: "academicYearId", as: "academicYear"
+    });
+
+    educationalCenter.hasMany(examenAudit, {
+        foreignKey: "educationalCenterId",
+    });
+
+    examenAudit.belongsTo(educationalCenter, {
+        foreignKey: "educationalCenterId",
     });
 };
