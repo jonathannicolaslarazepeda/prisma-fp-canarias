@@ -4,14 +4,14 @@ const day = 24 * 60 * 60 * 1000;
 const now = Date.now();
 
 const consents = [
-  { id: 1, studentId: 1, consentRequestId: 1, purpose: "Personal data processing", status: "granted", policyVersion: "v1.0", recordedAt: new Date(now - 9 * day) },
-  { id: 2, studentId: 2, consentRequestId: 2, purpose: "Personal data processing", status: "granted", policyVersion: "v1.0", recordedAt: new Date(now - 8 * day) },
-  { id: 3, studentId: 3, consentRequestId: 3, purpose: "Data sharing with partner companies", status: "denied", policyVersion: "v1.0", recordedAt: new Date(now - 6 * day) },
-  { id: 4, studentId: 4, consentRequestId: 4, purpose: "Data sharing with partner companies", status: "granted", policyVersion: "v1.1", recordedAt: new Date(now - 5 * day) },
-  { id: 5, studentId: 7, consentRequestId: 7, purpose: "Sending communications", status: "granted", policyVersion: "v1.1", recordedAt: new Date(now - 1 * day) },
-  { id: 6, studentId: 5, consentRequestId: null, purpose: "Personal data processing", status: "granted", policyVersion: "v1.0", recordedAt: new Date(now - 20 * day) },
-  { id: 7, studentId: 6, consentRequestId: null, purpose: "Personal data processing", status: "revoked", policyVersion: "v1.0", recordedAt: new Date(now - 12 * day) },
-  { id: 8, studentId: 8, consentRequestId: null, purpose: "Personal data processing", status: "granted", policyVersion: "v1.1", recordedAt: new Date(now - 2 * day) },
+  { id: 1, student_id: 1, consent_request_id: 1, purpose: "Personal data processing", status: "granted", policy_version: "v1.0", recorded_at: new Date(now - 9 * day) },
+  { id: 2, student_id: 2, consent_request_id: 2, purpose: "Personal data processing", status: "granted", policy_version: "v1.0", recorded_at: new Date(now - 8 * day) },
+  { id: 3, student_id: 3, consent_request_id: 3, purpose: "Data sharing with partner companies", status: "denied", policy_version: "v1.0", recorded_at: new Date(now - 6 * day) },
+  { id: 4, student_id: 4, consent_request_id: 4, purpose: "Data sharing with partner companies", status: "granted", policy_version: "v1.1", recorded_at: new Date(now - 5 * day) },
+  { id: 5, student_id: 7, consent_request_id: 7, purpose: "Sending communications", status: "granted", policy_version: "v1.1", recorded_at: new Date(now - 1 * day) },
+  { id: 6, student_id: 5, consent_request_id: null, purpose: "Personal data processing", status: "granted", policy_version: "v1.0", recorded_at: new Date(now - 20 * day) },
+  { id: 7, student_id: 6, consent_request_id: null, purpose: "Personal data processing", status: "revoked", policy_version: "v1.0", recorded_at: new Date(now - 12 * day) },
+  { id: 8, student_id: 8, consent_request_id: null, purpose: "Personal data processing", status: "granted", policy_version: "v1.1", recorded_at: new Date(now - 2 * day) },
 ];
 
 /** @type {import('sequelize-cli').Migration} */
