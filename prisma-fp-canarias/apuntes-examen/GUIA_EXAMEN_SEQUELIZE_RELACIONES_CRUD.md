@@ -1334,4 +1334,853 @@ EN AMBOS CASOS
 
 ---
 
-**Nota final:** el código del caso 1:N recoge lo trabajado en esta conversación y los fragmentos que compartiste. El código N:M es un **ejemplo de aprendizaje** que tendrás que adaptar a los nombres, tablas, modelos y convenciones reales del siguiente ejercicio. No se ha ejecutado ni probado contra tu repositorio desde esta guía.
+
+# RELACIÓN 1:1 CON SEQUELIZE — GUÍA PARA EL EXAMEN
+
+## 1. ¿Qué es una relación 1:1?
+
+Una relación **uno a uno (1:1)** significa que un registro de una tabla puede estar relacionado con **un único registro** de otra tabla.
+
+Por ejemplo, en nuestro proyecto:
+
+- Un centro educativo puede tener una única ficha de configuración.
+- Una ficha de configuración pertenece a un único centro educativo.
+
+Utilizaremos estas dos entidades:
+
+- `educationalCenter` → entidad que ya existe en nuestro proyecto.
+- `examenFicha` → entidad nueva que vamos a crear.
+
+**IMPORTANTE:** una relación 1:1 NO necesita tabla intermedia.
+
+Necesitamos:
+
+- 2 tablas.
+- 2 modelos Sequelize.
+- 1 clave foránea (`FOREIGN KEY`).
+- 1 restricción `UNIQUE` sobre esa clave foránea.
+
+---
+
+## 2. ¿Cómo quedan las tablas?
+
+### Tabla existente: educational_centers
+
+| id | name | code |
+|---|---|---|
+| 1 | Centro Norte | CN01 |
+| 2 | Centro Sur | CS02 |
+
+### Tabla nueva: examen_fichas
+
+| id | educational_center_id | description | operation |
+|---|---|---|---|
+| 1 | 1 | Ficha del Centro Norte | CREATE |
+| 2 | 2 | Ficha del Centro Sur | READ |
+
+El campo `educational_center_id` es una clave foránea que apunta al `id` de `educational_centers`.
+
+Además, debe ser **UNIQUE**.
+
+Esto significa que no podemos insertar otra ficha con `educational_center_id = 1`, porque ese centro ya tiene una ficha.
+
+### Diferencia con 1:N
+
+En una relación 1:N, la clave foránea puede repetirse.
+
+En una relación 1:1, la clave foránea debe ser única.
+
+---
+
+# PASO 1. CREAR EL MODELO
+
+## 3. Crear el archivo del modelo
+
+Dentro de nuestro backend, creamos la carpeta:
+
+`src/modules/examen-fichas/`
+
+Y el archivo:
+
+`examen-ficha.model.ts`
+
+Ejemplo:
+
+```typescript
+import {
+  Model,
+  DataTypes,
+  Optional
+} from "sequelize";
+
+import { sequelize } from "../../config/database";
+
+interface ExamenFichaAttributes {
+  id: number;
+  educationalCenterId: number;
+  description: string;
+  operation: "CREATE" | "MODIFY" | "READ" | null;
+}
+
+interface ExamenFichaCreationAttributes
+  extends Optional<
+    ExamenFichaAttributes,
+    "id" | "operation"
+  > {}
+
+export class ExamenFicha
+  extends Model<
+    ExamenFichaAttributes,
+    ExamenFichaCreationAttributes
+  >
+  implements ExamenFichaAttributes
+{
+  declare id: number;
+  declare educationalCenterId: number;
+  declare description: string;
+  declare operation: "CREATE" | "MODIFY" | "READ" | null;
+}
+
+ExamenFicha.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+
+    educationalCenterId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+      field: "educational_center_id"
+    },
+
+    description: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+
+    operation: {
+      type: DataTypes.ENUM(
+        "CREATE",
+        "MODIFY",
+        "READ"
+      ),
+      allowNull: true
+    }
+  },
+  {
+    sequelize,
+    tableName: "examen_fichas",
+    timestamps: true,
+    underscored: true
+  }
+);
+```
+
+**ATENCIÓN:** adapta la importación de `sequelize` y la estructura de la clase al patrón de los modelos existentes en tu proyecto.
+
+### ¿Qué hace cada propiedad?
+
+- `id`: clave primaria.
+- `educationalCenterId`: clave foránea del centro.
+- `description`: descripción obligatoria.
+- `operation`: ENUM opcional.
+- `unique: true`: impide que un centro tenga dos fichas.
+- `field`: indica el nombre real de la columna en PostgreSQL.
+- `underscored: true`: utiliza nombres como `created_at` y `updated_at`.
+
+---
+
+# PASO 2. CREAR LAS ASOCIACIONES
+
+## 4. Modificar associations.ts
+
+En:
+
+`src/models/associations.ts`
+
+Importamos los dos modelos.
+
+El nombre exacto de las importaciones dependerá de cómo estén exportados en el proyecto.
+
+```typescript
+// Importar los modelos correspondientes.
+
+// Un centro tiene una ficha.
+EducationalCenter.hasOne(ExamenFicha, {
+  foreignKey: "educationalCenterId"
+});
+
+// Una ficha pertenece a un centro.
+ExamenFicha.belongsTo(EducationalCenter, {
+  foreignKey: "educationalCenterId"
+});
+```
+
+### ¿Por qué usamos hasOne?
+
+Porque un centro educativo puede tener una única ficha.
+
+### ¿Por qué usamos belongsTo?
+
+Porque cada ficha pertenece a un centro educativo.
+
+### Regla para memorizar
+
+**1:1 = hasOne + belongsTo**
+
+No utilizamos `hasMany` ni `belongsToMany`.
+
+---
+
+# PASO 3. CREAR LA MIGRACIÓN
+
+## 5. Generar la migración
+
+Desde la carpeta `backend/database`:
+
+```bash
+npx sequelize-cli migration:generate --name create-examen-fichas
+```
+
+Se generará un archivo dentro de:
+
+`database/migrations/`
+
+## 6. Código de la migración
+
+```javascript
+"use strict";
+
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable(
+      "examen_fichas",
+      {
+        id: {
+          type: Sequelize.INTEGER,
+          autoIncrement: true,
+          primaryKey: true
+        },
+
+        educational_center_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          unique: true,
+          references: {
+            model: "educational_centers",
+            key: "id"
+          },
+          onUpdate: "CASCADE",
+          onDelete: "CASCADE"
+        },
+
+        description: {
+          type: Sequelize.STRING(255),
+          allowNull: false
+        },
+
+        operation: {
+          type: Sequelize.ENUM(
+            "CREATE",
+            "MODIFY",
+            "READ"
+          ),
+          allowNull: true
+        },
+
+        created_at: {
+          type: Sequelize.DATE,
+          allowNull: false
+        },
+
+        updated_at: {
+          type: Sequelize.DATE,
+          allowNull: false
+        }
+      }
+    );
+  },
+
+  async down(queryInterface) {
+    await queryInterface.dropTable(
+      "examen_fichas"
+    );
+  }
+};
+```
+
+### Lo más importante de esta migración
+
+```javascript
+educational_center_id: {
+  type: Sequelize.INTEGER,
+  allowNull: false,
+  unique: true,
+  references: {
+    model: "educational_centers",
+    key: "id"
+  }
+}
+```
+
+- `references` crea la clave foránea.
+- `unique: true` garantiza la relación 1:1.
+- `allowNull: false` obliga a que cada ficha pertenezca a un centro.
+
+### ¡OJO CON LOS NOMBRES!
+
+En nuestro proyecto PostgreSQL utiliza nombres en `snake_case`:
+
+- `educational_center_id`
+- `created_at`
+- `updated_at`
+
+No confundas estos nombres con los de TypeScript:
+
+- `educationalCenterId`
+- `createdAt`
+- `updatedAt`
+
+Este error puede provocar un **500 Internal Server Error**.
+
+---
+
+# PASO 4. EJECUTAR LA MIGRACIÓN
+
+## 7. Crear la tabla en PostgreSQL
+
+Desde la carpeta `backend`:
+
+```bash
+npm run db:migrate
+```
+
+Comprobamos en PostgreSQL que existe la tabla:
+
+`examen_fichas`
+
+Y que tiene la restricción `UNIQUE` sobre:
+
+`educational_center_id`
+
+---
+
+# PASO 5. CREAR EL SEEDER
+
+## 8. Generar el seeder
+
+Desde `backend/database`:
+
+```bash
+npx sequelize-cli seed:generate --name seed-examen-fichas
+```
+
+## 9. Código del seeder
+
+```javascript
+"use strict";
+
+module.exports = {
+  async up(queryInterface) {
+    await queryInterface.bulkInsert(
+      "examen_fichas",
+      [
+        {
+          educational_center_id: 1,
+          description: "Ficha inicial del centro",
+          operation: "CREATE",
+          created_at: new Date(),
+          updated_at: new Date()
+        }
+      ],
+      {}
+    );
+  },
+
+  async down(queryInterface) {
+    await queryInterface.bulkDelete(
+      "examen_fichas",
+      {
+        educational_center_id: 1
+      },
+      {}
+    );
+  }
+};
+```
+
+**IMPORTANTE:** el centro educativo con `id = 1` debe existir antes de ejecutar el seeder.
+
+Si no existe, PostgreSQL devolverá un error de clave foránea.
+
+Ejecutamos desde `backend`:
+
+```bash
+npm run db:seed
+```
+
+Si ya has ejecutado los seeders, no los vuelvas a lanzar sin comprobar antes qué registros se insertaron.
+
+---
+
+# PASO 6. CREAR EL CRUD
+
+## 10. Archivos necesarios
+
+Dentro de:
+
+`src/modules/examen-fichas/`
+
+Creamos:
+
+```text
+examen-fichas/
+├── examen-ficha.model.ts
+├── examen-ficha.service.ts
+├── examen-ficha.controller.ts
+└── examen-ficha.routes.ts
+```
+
+### Service
+
+El service contiene las consultas a Sequelize.
+
+```typescript
+import { ExamenFicha } from "./examen-ficha.model";
+
+export const getAll = async () => {
+  return await ExamenFicha.findAll();
+};
+
+export const getById = async (id: number) => {
+  return await ExamenFicha.findByPk(id);
+};
+
+export const create = async (data: any) => {
+  return await ExamenFicha.create(data);
+};
+
+export const update = async (
+  id: number,
+  data: any
+) => {
+  const ficha = await ExamenFicha.findByPk(id);
+
+  if (!ficha) return null;
+
+  await ficha.update(data);
+
+  return ficha;
+};
+
+export const remove = async (id: number) => {
+  const ficha = await ExamenFicha.findByPk(id);
+
+  if (!ficha) return false;
+
+  await ficha.destroy();
+
+  return true;
+};
+
+export const getByOperation = async (
+  operation: string
+) => {
+  return await ExamenFicha.findAll({
+    where: { operation }
+  });
+};
+```
+
+**Nota:** `any` se usa aquí para simplificar el ejemplo de estudio. En el proyecto real conviene utilizar tipos de entrada específicos.
+
+### Controller
+
+El controller recibe las peticiones HTTP, valida los datos y llama al service.
+
+Ejemplo de creación:
+
+```typescript
+import {
+  Request,
+  Response
+} from "express";
+
+import * as service from "./examen-ficha.service";
+
+export const create = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const ficha = await service.create(req.body);
+
+    return res.status(201).json(ficha);
+  } catch (error: any) {
+    return res.status(400).json({
+      message: error.message
+    });
+  }
+};
+```
+
+Para completar el CRUD, se crean controladores equivalentes para:
+
+- `getAll`
+- `getById`
+- `update`
+- `remove`
+- `getByOperation`
+
+En `getById`, `update` y `remove` hay que comprobar si el registro existe y devolver `404` cuando no exista.
+
+### Routes
+
+En:
+
+`examen-ficha.routes.ts`
+
+```typescript
+import { Router } from "express";
+
+import * as controller from "./examen-ficha.controller";
+
+const router = Router();
+
+router.get("/", controller.getAll);
+
+router.get(
+  "/operation/create",
+  controller.getByOperation
+);
+
+router.get("/:id", controller.getById);
+
+router.post("/", controller.create);
+
+router.put("/:id", controller.update);
+
+router.delete("/:id", controller.remove);
+
+export default router;
+```
+
+Este archivo muestra la estructura de las rutas. Para que funcione, hay que implementar y exportar todos los métodos del controller.
+
+**IMPORTANTE:** la ruta `/operation/create` debe estar antes de `/:id`, porque si no Express podría interpretar `operation` como un ID.
+
+---
+
+# PASO 7. REGISTRAR LAS RUTAS
+
+## 11. Conectar el módulo al proyecto
+
+En el archivo central de rutas del proyecto, normalmente:
+
+`src/routes/index.ts`
+
+Registramos el router:
+
+```typescript
+router.use(
+  "/examen-fichas",
+  examenFichaRoutes
+);
+```
+
+El prefijo `/api` dependerá de cómo esté configurado el router principal.
+
+Si el proyecto ya utiliza `/api`, tendremos estos endpoints:
+
+| Método | Endpoint | Acción |
+|---|---|---|
+| GET | /api/examen-fichas | Listar fichas |
+| GET | /api/examen-fichas/1 | Obtener una ficha |
+| POST | /api/examen-fichas | Crear una ficha |
+| PUT | /api/examen-fichas/1 | Modificar una ficha |
+| DELETE | /api/examen-fichas/1 | Eliminar una ficha |
+| GET | /api/examen-fichas/operation/create | Filtrar por CREATE |
+
+También debemos comprobar que el modelo se importe y que las asociaciones se inicialicen al arrancar el servidor.
+
+---
+
+# PASO 8. PROBAR CON BRUNO
+
+## 12. Arrancar el servidor
+
+Desde `backend`:
+
+```bash
+npm run dev
+```
+
+La API del proyecto utiliza normalmente el puerto `3000`.
+
+## 13. POST — Crear una ficha
+
+**POST**
+
+`http://localhost:3000/api/examen-fichas`
+
+Body JSON:
+
+```json
+{
+  "educationalCenterId": 1,
+  "description": "Ficha de prueba",
+  "operation": "CREATE"
+}
+```
+
+Resultado esperado:
+
+**201 Created**
+
+La ficha se guarda correctamente.
+
+## 14. GET — Obtener todas las fichas
+
+**GET**
+
+`http://localhost:3000/api/examen-fichas`
+
+Resultado esperado:
+
+**200 OK**
+
+Devuelve un array con las fichas.
+
+## 15. GET — Obtener una ficha por ID
+
+**GET**
+
+`http://localhost:3000/api/examen-fichas/1`
+
+Resultado esperado:
+
+**200 OK**, si existe.
+
+Si no existe, debe devolver **404 Not Found**.
+
+## 16. PUT — Modificar una ficha
+
+**PUT**
+
+`http://localhost:3000/api/examen-fichas/1`
+
+Body JSON:
+
+```json
+{
+  "description": "Ficha modificada",
+  "operation": "MODIFY"
+}
+```
+
+Resultado esperado:
+
+**200 OK**
+
+## 17. DELETE — Eliminar una ficha
+
+**DELETE**
+
+`http://localhost:3000/api/examen-fichas/1`
+
+Resultado esperado:
+
+**200 OK** o **204 No Content**, según cómo esté implementado el controller.
+
+## 18. GET especial — Filtrar por CREATE
+
+**GET**
+
+`http://localhost:3000/api/examen-fichas/operation/create`
+
+En el controller podemos utilizar:
+
+```typescript
+export const getByOperation = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const fichas = await service.getByOperation(
+      "CREATE"
+    );
+
+    return res.status(200).json(fichas);
+  } catch (error: any) {
+    return res.status(500).json({
+      message: error.message
+    });
+  }
+};
+```
+
+Resultado esperado:
+
+**200 OK**
+
+Solo deben aparecer las fichas cuya operación sea `CREATE`.
+
+---
+
+# PASO 9. COMPROBAR QUE LA RELACIÓN ES 1:1
+
+## 19. Prueba más importante del examen
+
+Primero creamos una ficha:
+
+```json
+{
+  "educationalCenterId": 1,
+  "description": "Primera ficha",
+  "operation": "CREATE"
+}
+```
+
+Después intentamos crear otra ficha para el mismo centro:
+
+```json
+{
+  "educationalCenterId": 1,
+  "description": "Segunda ficha",
+  "operation": "READ"
+}
+```
+
+**La segunda petición debe fallar.**
+
+¿Por qué?
+
+Porque `educational_center_id` tiene `UNIQUE`.
+
+PostgreSQL no permite que dos fichas pertenezcan al mismo centro.
+
+El controller debe transformar el error de unicidad en una respuesta HTTP adecuada, por ejemplo `409 Conflict`. Si todavía utilizamos el controller básico del ejemplo, devolverá `400 Bad Request`.
+
+Esta es la prueba que demuestra que la relación es realmente **1:1**.
+
+---
+
+# PASO 10. CAPTURAS PARA EL EXAMEN
+
+## 20. ¿Qué capturas guardar?
+
+Dentro de:
+
+`docs/screenshots/`
+
+Podemos guardar:
+
+- Tabla `examen_fichas` creada en PostgreSQL.
+- Restricción `UNIQUE` de la clave foránea.
+- Migración ejecutada correctamente.
+- Seeder ejecutado correctamente.
+- GET funcionando.
+- POST funcionando.
+- PUT funcionando.
+- DELETE funcionando.
+- GET especial por `CREATE`.
+- Error al intentar crear dos fichas para el mismo centro.
+
+---
+
+# ERRORES FRECUENTES
+
+## Error 1. Olvidar UNIQUE
+
+Si no ponemos:
+
+```javascript
+unique: true
+```
+
+La base de datos podría permitir varias fichas para un mismo centro.
+
+Entonces la relación no estaría correctamente protegida como 1:1.
+
+## Error 2. Confundir camelCase y snake_case
+
+En TypeScript:
+
+```typescript
+educationalCenterId
+```
+
+En PostgreSQL:
+
+```text
+educational_center_id
+```
+
+Hay que mapear correctamente los nombres.
+
+## Error 3. Usar hasMany
+
+Esto:
+
+```typescript
+EducationalCenter.hasMany(ExamenFicha);
+```
+
+Representaría una relación 1:N.
+
+Para una relación 1:1 usamos:
+
+```typescript
+EducationalCenter.hasOne(ExamenFicha);
+```
+
+## Error 4. Crear una ficha para un centro inexistente
+
+Si enviamos:
+
+```json
+{
+  "educationalCenterId": 9999,
+  "description": "Ficha incorrecta"
+}
+```
+
+Y no existe ese centro, PostgreSQL rechazará la inserción por la clave foránea.
+
+## Error 5. No registrar las rutas
+
+Aunque el modelo, service y controller estén bien, si no registramos las rutas en el proyecto obtendremos un error `404`.
+
+---
+
+# CHULETA FINAL PARA MEMORIZAR
+
+| Relación | Sequelize | Tabla intermedia | Clave foránea |
+|---|---|---|---|
+| 1:1 | hasOne + belongsTo | NO | UNIQUE |
+| 1:N | hasMany + belongsTo | NO | Normal |
+| N:M | belongsToMany + belongsToMany | SÍ | Dos FK |
+
+## Lo imprescindible de una relación 1:1
+
+1. Crear la nueva entidad.
+2. Definir su modelo Sequelize.
+3. Añadir `hasOne` y `belongsTo`.
+4. Crear la migración.
+5. Añadir una clave foránea con `UNIQUE`.
+6. Ejecutar la migración.
+7. Crear y ejecutar el seeder.
+8. Implementar el CRUD.
+9. Registrar las rutas.
+10. Probar todo con Bruno.
+11. Comprobar que no se permiten dos registros para el mismo centro.
+12. Guardar las capturas del examen.
+
+**REGLA DE ORO:**
+
+> Una relación 1:1 se implementa normalmente con dos tablas, una clave foránea y una restricción UNIQUE.
+
+**Si recuerdas `hasOne + belongsTo + UNIQUE`, ya tienes lo fundamental de la relación 1:1.**
