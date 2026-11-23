@@ -32,6 +32,7 @@ import "./modules/training-programs/training-program.model.js";
 import "./modules/tutor-assignments/tutor-assignment.model.js";
 
 import "./modules/examen-audits/examen-audit.model.js";
+import "./modules/examen-fichas/examen-ficha.model.js";
 
 async function startServer() {
     try {

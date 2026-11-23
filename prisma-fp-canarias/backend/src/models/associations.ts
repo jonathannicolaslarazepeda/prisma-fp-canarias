@@ -23,7 +23,10 @@ import { professionalFamily } from "../modules/professional-families/professiona
 import { trainingProgram } from "../modules/training-programs/training-program.model.js";
 import { tutorAssignment } from "../modules/tutor-assignments/tutor-assignment.model.js";
 import { studentEnrollment } from "../modules/students-enrollments/student-enrollment.model.js";
+
 import { examenAudit } from "../modules/examen-audits/examen-audit.model.js";
+import { examenFicha } from "../modules/examen-fichas/examen-ficha.model.js";
+
 // Pendiente: módulos Student y StudentEnrollment.
 // import { Student } from "../modules/students/student.model";
 // import { StudentEnrollment } from "../modules/student-enrollments/student-enrollment.model";
@@ -193,4 +196,36 @@ export function defineAssociations() {
     examenAudit.belongsTo(educationalCenter, {
         foreignKey: "educationalCenterId",
     });
+
+
+    // Educational Center - Examen Ficha (1:1)
+    educationalCenter.hasOne(examenFicha, {
+        foreignKey: "educationalCenterId",
+    });
+
+    examenFicha.belongsTo(educationalCenter, {
+        foreignKey: "educationalCenterId",
+    });
+
+//     // 1:1
+// A.hasOne(B, { foreignKey: "aId" });
+// B.belongsTo(A, { foreignKey: "aId" });
+
+// // 1:N
+// A.hasMany(B, { foreignKey: "aId" });
+// B.belongsTo(A, { foreignKey: "aId" });
+
+// // N:M
+// A.belongsToMany(B, {
+//     through: TablaIntermedia,
+//     foreignKey: "aId",
+//     otherKey: "bId"
+// });
+
+// B.belongsToMany(A, {
+//     through: TablaIntermedia,
+//     foreignKey: "bId",
+//     otherKey: "aId"
+// });
+
 };
