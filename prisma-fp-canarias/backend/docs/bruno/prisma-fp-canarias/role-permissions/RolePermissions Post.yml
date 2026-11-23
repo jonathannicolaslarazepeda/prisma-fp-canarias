@@ -13,7 +13,9 @@ http:
         "roleId" : 2, 
         "permissionId" : 4
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3OTU0NDgyMjcsImV4cCI6MTc5NTQ1MTgyNywiYXVkIjoicHJpc21hLWZwLWNhbmFyaWFzLWNsaWVudCIsImlzcyI6InByaXNtYS1mcC1jYW5hcmlhcy1hcGkiLCJzdWIiOiIxIn0.hJRuEGMjFpyNaD2ml_Bt3JbTbW-wnPs2QAfX00acgvg
 
 settings:
   encodeUrl: true

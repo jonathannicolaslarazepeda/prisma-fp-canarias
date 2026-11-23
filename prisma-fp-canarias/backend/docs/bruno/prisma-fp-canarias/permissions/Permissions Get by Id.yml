@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: http://localhost:3000/api/roles/1
+  url: http://localhost:3000/api/permissions/1
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3OTUxMTQ3ODYsImV4cCI6MTc5NTExODM4NiwiYXVkIjoicHJpc21hLWZwLWNhbmFyaWFzLWNsaWVudCIsImlzcyI6InByaXNtYS1mcC1jYW5hcmlhcy1hcGkiLCJzdWIiOiIxIn0.P_MnI6YDwFRWkl3e6JE5PstXxM9z2eeyIT0lVFbN_cs
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3OTU0NDc3NTQsImV4cCI6MTc5NTQ1MTM1NCwiYXVkIjoicHJpc21hLWZwLWNhbmFyaWFzLWNsaWVudCIsImlzcyI6InByaXNtYS1mcC1jYW5hcmlhcy1hcGkiLCJzdWIiOiIxIn0.KfUfppjBxWMHAFV-BW7ARuyhwoXi16KCq4JspvEvUC8
 
 settings:
   encodeUrl: true

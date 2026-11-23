@@ -5,15 +5,17 @@ info:
 
 http:
   method: POST
-  url: http://localhost:3000/api/roles
+  url: http://localhost:3000/api/permissions
   body:
     type: json
     data: |
       {
-        "name": "Nuevo Permiso",
+        "code": "Nuevo Permiso",
         "description" : "Nuevo Tipo de Permiso"
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3OTU0NDgxODgsImV4cCI6MTc5NTQ1MTc4OCwiYXVkIjoicHJpc21hLWZwLWNhbmFyaWFzLWNsaWVudCIsImlzcyI6InByaXNtYS1mcC1jYW5hcmlhcy1hcGkiLCJzdWIiOiIyIn0.UfG9KJVYterNsQrudoUIkRfIaeEf7niuNC7OZvH8-jQ
 
 settings:
   encodeUrl: true

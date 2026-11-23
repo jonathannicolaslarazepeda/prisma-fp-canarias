@@ -10,11 +10,14 @@ http:
     type: json
     data: |
       {
-        "email" : "pruebapostear01@gmail.com",
+        "email" : "pruebapostear02@gmail.com",
         "firstName" : "Nueno Usuario",
-        "lastName" : "Gutierrez"
+        "lastName" : "Gutierrez",
+        "passwordHash" : "password123"
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3OTU0NTIyOTIsImV4cCI6MTc5NTQ1NTg5MiwiYXVkIjoicHJpc21hLWZwLWNhbmFyaWFzLWNsaWVudCIsImlzcyI6InByaXNtYS1mcC1jYW5hcmlhcy1hcGkiLCJzdWIiOiIyIn0.2tbvFLSzNAoPXu2yix2AWU47ZWk2Lb4kABjwzGCEzLY
 
 settings:
   encodeUrl: true

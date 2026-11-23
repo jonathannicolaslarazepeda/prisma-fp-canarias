@@ -8,7 +8,7 @@ http:
   url: http://localhost:3000/api/auth/login
   auth:
     type: basic
-    username: ejemplo@example.com
+    username: jonathanlara@example.com
     password: password123
 
 settings:

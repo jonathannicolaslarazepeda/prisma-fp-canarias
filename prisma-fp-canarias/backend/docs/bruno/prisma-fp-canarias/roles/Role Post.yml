@@ -11,9 +11,11 @@ http:
     data: |
       {
         "name" : "Nuevo Rol",
-        "description" : "Nuevo Tipo de Rol",
+        "description" : "Nuevo Tipo de Rol"
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3OTU0NTA2OTYsImV4cCI6MTc5NTQ1NDI5NiwiYXVkIjoicHJpc21hLWZwLWNhbmFyaWFzLWNsaWVudCIsImlzcyI6InByaXNtYS1mcC1jYW5hcmlhcy1hcGkiLCJzdWIiOiIxIn0.lwKbskhiEMbWFvQFBC__Iq27R_M43KFls-x4fM8R1bA
 
 settings:
   encodeUrl: true
