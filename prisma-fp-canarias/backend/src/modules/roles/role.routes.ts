@@ -1,19 +1,20 @@
 import { Router } from "express";
 import { RoleController } from "./role.controller.js";
 import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
+import { authorize } from "../rbac/authorize.middleware.js";
 
 const router = Router();
 
 router.use(bearerAuth);
 
-router.get("/", RoleController.getAll);
+router.get("/", authorize('role:read'), RoleController.getAll);
 
-router.get("/:id", RoleController.getById);
+router.get("/:id", authorize('role:read'), RoleController.getById);
 
-router.post("/", RoleController.create);
+router.post("/", authorize('role:create'), RoleController.create);
 
-router.put("/:id", RoleController.update);
+router.put("/:id", authorize('role:update'), RoleController.update);
 
-router.delete("/:id", RoleController.delete);
+router.delete("/:id", authorize('role:delete'), RoleController.delete);
 
 export default router;
