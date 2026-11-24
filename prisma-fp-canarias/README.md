@@ -124,6 +124,73 @@ Other registered route prefixes include `/api/tutor-assignments`, `/api/students
 
 These are registered route prefixes, not a guarantee that every endpoint or HTTP method is implemented or functioning. Consult each module's route definitions for supported operations and request formats.
 
+## RBAC (Role-Based Access Control)
+
+Role-Based Access Control (RBAC) manages access to application resources according to the permissions assigned to each user role.
+
+Users can have multiple roles, and each role can have multiple permissions. Permissions define the operations that users are authorized to perform on application resources.
+
+### Roles
+
+| Role | Description |
+| --- | --- |
+| Administrator IT | Responsible for system administration and resource management. |
+| User | Has limited access to general application resources. |
+| Tutor | Has access to academic information and assigned resources. |
+| Administrator College | Responsible for managing resources associated with their educational center. |
+
+### Permission Matrix
+
+The following tables describe the proposed access control policy for each application module.
+
+Permissions follow the `resource:action` naming convention.
+
+The supported CRUD actions are:
+
+- `create`: Create new records.
+- `read`: Retrieve existing records.
+- `update`: Modify existing records.
+- `delete`: Delete existing records.
+
+**Legend:**
+
+- ✅ Permission granted.
+- ❌ Permission denied.
+- \* Access restricted to the corresponding educational center or assigned resources.
+
+Restricted permissions require additional authorization checks because RBAC alone does not enforce resource ownership or assignment restrictions.
+
+#### Academic Administration
+
+The academic administration module includes educational centers, academic years, professional families, training programs, tutor assignments, and student enrollments.
+
+| Permission | Administrator IT | User | Tutor | Administrator College |
+| --- | :---: | :---: | :---: | :---: |
+| `educational-center:read` | ✅ | ✅ | ✅ | ✅ |
+| `educational-center:create` | ✅ | ❌ | ❌ | ❌ |
+| `educational-center:update` | ✅ | ❌ | ❌ | ✅* |
+| `educational-center:delete` | ✅ | ❌ | ❌ | ❌ |
+| `academic-year:read` | ✅ | ✅ | ✅ | ✅ |
+| `academic-year:create` | ✅ | ❌ | ❌ | ❌ |
+| `academic-year:update` | ✅ | ❌ | ❌ | ❌ |
+| `academic-year:delete` | ✅ | ❌ | ❌ | ❌ |
+| `professional-family:read` | ✅ | ✅ | ✅ | ✅ |
+| `professional-family:create` | ✅ | ❌ | ❌ | ❌ |
+| `professional-family:update` | ✅ | ❌ | ❌ | ❌ |
+| `professional-family:delete` | ✅ | ❌ | ❌ | ❌ |
+| `training-program:read` | ✅ | ✅ | ✅ | ✅ |
+| `training-program:create` | ✅ | ❌ | ❌ | ❌ |
+| `training-program:update` | ✅ | ❌ | ❌ | ❌ |
+| `training-program:delete` | ✅ | ❌ | ❌ | ❌ |
+| `tutor-assignment:read` | ✅ | ❌ | ✅* | ✅* |
+| `tutor-assignment:create` | ✅ | ❌ | ❌ | ✅* |
+| `tutor-assignment:update` | ✅ | ❌ | ❌ | ✅* |
+| `tutor-assignment:delete` | ✅ | ❌ | ❌ | ✅* |
+| `student-enrollment:read` | ✅ | ❌ | ✅* | ✅* |
+| `student-enrollment:create` | ✅ | ❌ | ❌ | ✅* |
+| `student-enrollment:update` | ✅ | ❌ | ❌ | ✅* |
+| `student-enrollment:delete` | ✅ | ❌ | ❌ | ❌ |
+
 ## Running the Tests
 
 The current backend `package.json` **does not provide an automated `test` script**. Available commands include:
