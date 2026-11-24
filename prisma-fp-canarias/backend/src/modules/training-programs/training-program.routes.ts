@@ -1,19 +1,21 @@
+
 import { Router } from "express";
 import { trainingProgramController } from "./training-program.controller.js";
 import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
+import { authorize } from "../rbac/authorize.middleware.js";
 
 const router = Router();
 
 router.use(bearerAuth);
 
-router.get("/", trainingProgramController.getAll);
+router.get("/", authorize('training-program:read'), trainingProgramController.getAll);
 
-router.get("/:id", trainingProgramController.getById);
+router.get("/:id", authorize('training-program:read'), trainingProgramController.getById);
 
-router.post("/", trainingProgramController.create);
+router.post("/", authorize('training-program:create'), trainingProgramController.create);
 
-router.put("/:id", trainingProgramController.update);
+router.put("/:id", authorize('training-program:update'), trainingProgramController.update);
 
-router.delete("/:id", trainingProgramController.delete);
+router.delete("/:id", authorize('training-program:delete'), trainingProgramController.delete);
 
 export default router;
