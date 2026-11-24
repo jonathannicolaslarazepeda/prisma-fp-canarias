@@ -311,7 +311,59 @@ module.exports = {
     {
       role_id: 4,
       permission_id: 43
-    }
+    },
+
+    // Administrator IT - Companies, internships and employment records (full access)
+    { role_id: 1, permission_id: 45 },
+    { role_id: 1, permission_id: 46 },
+    { role_id: 1, permission_id: 47 },
+    { role_id: 1, permission_id: 48 },
+    { role_id: 1, permission_id: 49 },
+    { role_id: 1, permission_id: 50 },
+    { role_id: 1, permission_id: 51 },
+    { role_id: 1, permission_id: 52 },
+    { role_id: 1, permission_id: 53 },
+    { role_id: 1, permission_id: 54 },
+    { role_id: 1, permission_id: 55 },
+    { role_id: 1, permission_id: 56 },
+    { role_id: 1, permission_id: 57 },
+
+    // Administrator IT - Surveys (full access)
+    { role_id: 1, permission_id: 58 },
+    { role_id: 1, permission_id: 59 },
+    { role_id: 1, permission_id: 60 },
+    { role_id: 1, permission_id: 61 },
+    { role_id: 1, permission_id: 62 },
+    { role_id: 1, permission_id: 63 },
+    { role_id: 1, permission_id: 64 },
+    { role_id: 1, permission_id: 65 },
+    { role_id: 1, permission_id: 66 },
+    { role_id: 1, permission_id: 67 },
+    { role_id: 1, permission_id: 68 },
+    { role_id: 1, permission_id: 69 },
+    { role_id: 1, permission_id: 70 },
+    { role_id: 1, permission_id: 71 },
+    { role_id: 1, permission_id: 72 },
+    { role_id: 1, permission_id: 73 },
+
+    // Tutor - Companies, internships and employment records (read, create, update; HU-04, HU-10)
+    { role_id: 3, permission_id: 45 },
+    { role_id: 3, permission_id: 46 },
+    { role_id: 3, permission_id: 47 },
+    { role_id: 3, permission_id: 49 },
+    { role_id: 3, permission_id: 50 },
+    { role_id: 3, permission_id: 51 },
+    { role_id: 3, permission_id: 54 },
+    { role_id: 3, permission_id: 55 },
+    { role_id: 3, permission_id: 56 },
+
+    // Administrator College (Directivo) - Hiring rate and surveys (HU-10, HU-11)
+    { role_id: 4, permission_id: 53 },
+    { role_id: 4, permission_id: 58 },
+    { role_id: 4, permission_id: 62 },
+    { role_id: 4, permission_id: 66 },
+    { role_id: 4, permission_id: 67 },
+    { role_id: 4, permission_id: 70 }
   ], {});
 
     //Synchronous PostgreSQL autoincrement
@@ -362,6 +414,30 @@ module.exports = {
         37, 38, 39, 40,
         41, 42, 43
       ]
+    });
+
+    // Companies, internships, employment records and surveys
+    await queryInterface.bulkDelete('role_permissions', {
+      role_id: 1,
+      permission_id: [
+        45, 46, 47, 48,
+        49, 50, 51, 52, 53,
+        54, 55, 56, 57,
+        58, 59, 60, 61,
+        62, 63, 64, 65,
+        66, 67, 68, 69,
+        70, 71, 72, 73
+      ]
+    });
+
+    await queryInterface.bulkDelete('role_permissions', {
+      role_id: 3,
+      permission_id: [45, 46, 47, 49, 50, 51, 54, 55, 56]
+    });
+
+    await queryInterface.bulkDelete('role_permissions', {
+      role_id: 4,
+      permission_id: [53, 58, 62, 66, 67, 70]
     });
   }
 };

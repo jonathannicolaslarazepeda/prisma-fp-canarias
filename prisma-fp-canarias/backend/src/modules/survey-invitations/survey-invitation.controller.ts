@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { SurveyInvitationService } from "./survey-invitation.service.js";
+import { SurveyService } from "../surveys/survey.service.js";
 
 export class SurveyInvitationController {
 
@@ -75,6 +76,70 @@ export class SurveyInvitationController {
       }
 
       res.json(surveyInvitation);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Pública: el token del enlace es la única credencial.
+  static async getByToken(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const token = String(req.params.token);
+
+      const surveyInvitation = await SurveyInvitationService.findValidByToken(token);
+
+      if (!surveyInvitation) {
+        res.status(404).json({
+          message: "El enlace no es válido o ha caducado",
+        });
+
+        return;
+      }
+
+      res.json(surveyInvitation);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async createBatch(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const { surveyId, studentIds } = req.body;
+
+      if (!surveyId || !Array.isArray(studentIds) || studentIds.length === 0) {
+        res.status(400).json({
+          message: "surveyId y studentIds (lista no vacía) son obligatorios",
+        });
+
+        return;
+      }
+
+      const survey = await SurveyService.findById(Number(surveyId));
+
+      if (!survey) {
+        res.status(404).json({
+          message: "Encuesta no encontrada",
+        });
+
+        return;
+      }
+
+      const result = await SurveyInvitationService.createForStudents(
+        survey,
+        studentIds.map(Number)
+      );
+
+      res.status(201).json(result);
 
     } catch (error) {
       next(error);

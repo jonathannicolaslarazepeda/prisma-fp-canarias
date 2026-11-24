@@ -4,6 +4,9 @@ import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
 
 const router = Router();
 
+// Pública (antes de bearerAuth): abrir el formulario desde el enlace de la encuesta.
+router.get("/token/:token", SurveyInvitationController.getByToken);
+
 router.use(bearerAuth);
 
 router.get("/", SurveyInvitationController.getAll);
@@ -15,6 +18,8 @@ router.get("/eagerly/:id", SurveyInvitationController.getEagerlyById);
 router.get("/:id", SurveyInvitationController.getById);
 
 router.post("/", SurveyInvitationController.create);
+
+router.post("/batch", SurveyInvitationController.createBatch);
 
 router.put("/:id", SurveyInvitationController.update);
 

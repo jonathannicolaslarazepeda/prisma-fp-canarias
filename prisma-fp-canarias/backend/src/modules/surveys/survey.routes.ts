@@ -12,6 +12,10 @@ router.get("/eagerly", SurveyController.getAllEagerly);
 
 router.get("/eagerly/:id", SurveyController.getEagerlyById);
 
+router.get("/active", SurveyController.getActive);
+
+router.get("/:id/summary", SurveyController.getSummary);
+
 router.get("/:id", SurveyController.getById);
 
 router.post("/", SurveyController.create);

@@ -81,6 +81,47 @@ export class EmploymentRecordController {
     }
   }
 
+  static async getAllByStudentId(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const studentId = Number(req.params.studentId);
+
+      const employmentRecords = await EmploymentRecordService.findAllByStudentId(studentId);
+
+      res.json(employmentRecords);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getFirstEmployment(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const studentId = Number(req.params.studentId);
+
+      const firstEmployment = await EmploymentRecordService.getFirstEmployment(studentId);
+
+      if (!firstEmployment) {
+        res.status(404).json({
+          message: "El alumno no tiene fecha de titulación",
+        });
+
+        return;
+      }
+
+      res.json(firstEmployment);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async create(
     req: Request,
     res: Response,
@@ -92,6 +133,20 @@ export class EmploymentRecordController {
       if (!studentId || !companyId || !position || !startDate) {
         res.status(400).json({
           message: "studentId, companyId, position y startDate son obligatorios",
+        });
+
+        return;
+      }
+
+      const validationError = await EmploymentRecordService.validateInternshipLink({
+        studentId,
+        companyId,
+        internshipId,
+      });
+
+      if (validationError) {
+        res.status(400).json({
+          message: validationError,
         });
 
         return;
@@ -129,6 +184,19 @@ export class EmploymentRecordController {
       if (!employmentRecord) {
         res.status(404).json({
           message: "Registro de empleo no encontrado",
+        });
+
+        return;
+      }
+
+      const validationError = await EmploymentRecordService.validateInternshipLink(
+        req.body,
+        employmentRecord
+      );
+
+      if (validationError) {
+        res.status(400).json({
+          message: validationError,
         });
 
         return;

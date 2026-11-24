@@ -4,6 +4,9 @@ import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
 
 const router = Router();
 
+// Pública (antes de bearerAuth): enviar las respuestas desde el enlace de la encuesta.
+router.post("/token/:token", SurveyAnswerController.submitByToken);
+
 router.use(bearerAuth);
 
 router.get("/", SurveyAnswerController.getAll);
