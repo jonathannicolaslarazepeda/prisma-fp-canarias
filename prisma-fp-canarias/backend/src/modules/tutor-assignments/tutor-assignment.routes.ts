@@ -1,19 +1,21 @@
+
 import { Router } from "express";
 import { tutorAssignmentController } from "./tutor-assignment.controller.js";
 import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
+import { authorize } from "../rbac/authorize.middleware.js";
 
 const router = Router();
 
 router.use(bearerAuth);
 
-router.get("/", tutorAssignmentController.getAll);
+router.get("/", authorize('tutor-assignment:read'), tutorAssignmentController.getAll);
 
-router.get("/:id", tutorAssignmentController.getById);
+router.get("/:id", authorize('tutor-assignment:read'), tutorAssignmentController.getById);
 
-router.post("/", tutorAssignmentController.create);
+router.post("/", authorize('tutor-assignment:create'), tutorAssignmentController.create);
 
-router.put("/:id", tutorAssignmentController.update);
+router.put("/:id", authorize('tutor-assignment:update'), tutorAssignmentController.update);
 
-router.delete("/:id", tutorAssignmentController.delete)
+router.delete("/:id", authorize('tutor-assignment:delete'), tutorAssignmentController.delete);
 
 export default router;
