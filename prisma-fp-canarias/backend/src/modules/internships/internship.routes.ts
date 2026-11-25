@@ -12,6 +12,10 @@ router.get("/eagerly", InternshipController.getAllEagerly);
 
 router.get("/eagerly/:id", InternshipController.getEagerlyById);
 
+router.get("/hiring-rate", InternshipController.getHiringRate);
+
+router.get("/student/:studentId", InternshipController.getAllByStudentId);
+
 router.get("/:id", InternshipController.getById);
 
 router.post("/", InternshipController.create);

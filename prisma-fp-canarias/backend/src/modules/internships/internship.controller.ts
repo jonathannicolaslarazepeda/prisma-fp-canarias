@@ -81,6 +81,36 @@ export class InternshipController {
     }
   }
 
+  static async getAllByStudentId(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const studentId = Number(req.params.studentId);
+
+      const internships = await InternshipService.findAllByStudentId(studentId);
+
+      res.json(internships);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getHiringRate(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const hiringRate = await InternshipService.getHiringRate();
+
+      res.json(hiringRate);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async create(
     req: Request,
     res: Response,
@@ -92,6 +122,16 @@ export class InternshipController {
       if (!enrollmentId || !companyId || !startDate) {
         res.status(400).json({
           message: "enrollmentId, companyId y startDate son obligatorios",
+        });
+
+        return;
+      }
+
+      const validationError = InternshipService.validateHiring({ startDate, wasHired, hiringDate });
+
+      if (validationError) {
+        res.status(400).json({
+          message: validationError,
         });
 
         return;
@@ -127,6 +167,16 @@ export class InternshipController {
       if (!internship) {
         res.status(404).json({
           message: "Prácticas no encontradas",
+        });
+
+        return;
+      }
+
+      const validationError = InternshipService.validateHiring(req.body, internship);
+
+      if (validationError) {
+        res.status(400).json({
+          message: validationError,
         });
 
         return;

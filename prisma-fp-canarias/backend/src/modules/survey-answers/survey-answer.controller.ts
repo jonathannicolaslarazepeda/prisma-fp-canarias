@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { SurveyAnswerService } from "./survey-answer.service.js";
+import { SurveyInvitationService } from "../survey-invitations/survey-invitation.service.js";
 
 export class SurveyAnswerController {
 
@@ -75,6 +76,53 @@ export class SurveyAnswerController {
       }
 
       res.json(surveyAnswer);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Pública: el token del enlace es la única credencial.
+  static async submitByToken(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const token = String(req.params.token);
+      const { answers } = req.body;
+
+      const invitation = await SurveyInvitationService.findValidByToken(token);
+
+      if (!invitation) {
+        res.status(404).json({
+          message: "El enlace no es válido o ha caducado",
+        });
+
+        return;
+      }
+
+      const validationError = await SurveyAnswerService.validateAnswers(invitation, answers);
+
+      if (validationError) {
+        res.status(400).json({
+          message: validationError,
+        });
+
+        return;
+      }
+
+      const surveyAnswers = await SurveyAnswerService.submitAnswers(invitation, answers);
+
+      if (!surveyAnswers) {
+        res.status(409).json({
+          message: "La encuesta ya ha sido respondida",
+        });
+
+        return;
+      }
+
+      res.status(201).json(surveyAnswers);
 
     } catch (error) {
       next(error);

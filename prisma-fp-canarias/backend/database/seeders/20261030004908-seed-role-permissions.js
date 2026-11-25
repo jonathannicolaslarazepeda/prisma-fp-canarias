@@ -129,5 +129,29 @@ module.exports = {
         61, 62, 63, 64, 65, 66, 67, 68, 69, 70
       ]
     });
+
+    // Companies, internships, employment records and surveys
+    await queryInterface.bulkDelete('role_permissions', {
+      role_id: 1,
+      permission_id: [
+        45, 46, 47, 48,
+        49, 50, 51, 52, 53,
+        54, 55, 56, 57,
+        58, 59, 60, 61,
+        62, 63, 64, 65,
+        66, 67, 68, 69,
+        70, 71, 72, 73
+      ]
+    });
+
+    await queryInterface.bulkDelete('role_permissions', {
+      role_id: 3,
+      permission_id: [45, 46, 47, 49, 50, 51, 54, 55, 56]
+    });
+
+    await queryInterface.bulkDelete('role_permissions', {
+      role_id: 4,
+      permission_id: [53, 58, 62, 66, 67, 70]
+    });
   }
 };

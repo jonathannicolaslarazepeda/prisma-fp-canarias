@@ -12,6 +12,10 @@ router.get("/eagerly", EmploymentRecordController.getAllEagerly);
 
 router.get("/eagerly/:id", EmploymentRecordController.getEagerlyById);
 
+router.get("/student/:studentId", EmploymentRecordController.getAllByStudentId);
+
+router.get("/student/:studentId/first-employment", EmploymentRecordController.getFirstEmployment);
+
 router.get("/:id", EmploymentRecordController.getById);
 
 router.post("/", EmploymentRecordController.create);

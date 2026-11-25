@@ -81,6 +81,54 @@ export class SurveyController {
     }
   }
 
+  static async getActive(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const survey = await SurveyService.findActiveWithQuestions();
+
+      if (!survey) {
+        res.status(404).json({
+          message: "No hay ninguna encuesta activa",
+        });
+
+        return;
+      }
+
+      res.json(survey);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getSummary(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const id = Number(req.params.id);
+
+      const summary = await SurveyService.getAnswerSummary(id);
+
+      if (!summary) {
+        res.status(404).json({
+          message: "Encuesta no encontrada",
+        });
+
+        return;
+      }
+
+      res.json(summary);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async create(
     req: Request,
     res: Response,

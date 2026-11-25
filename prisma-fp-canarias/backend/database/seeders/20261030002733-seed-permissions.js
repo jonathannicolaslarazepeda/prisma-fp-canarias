@@ -235,6 +235,165 @@ module.exports = {
       id: 44,
       code: 'student-enrollment:delete',
       description: 'Permission to delete student enrollments'
+    },
+
+    // Company permissions
+    {
+      id: 45,
+      code: 'company:read',
+      description: 'Permission to read company information'
+    },
+    {
+      id: 46,
+      code: 'company:create',
+      description: 'Permission to create new companies'
+    },
+    {
+      id: 47,
+      code: 'company:update',
+      description: 'Permission to update existing companies'
+    },
+    {
+      id: 48,
+      code: 'company:delete',
+      description: 'Permission to delete companies'
+    },
+
+    // Internship permissions
+    {
+      id: 49,
+      code: 'internship:read',
+      description: 'Permission to read internship information'
+    },
+    {
+      id: 50,
+      code: 'internship:create',
+      description: 'Permission to create new internships'
+    },
+    {
+      id: 51,
+      code: 'internship:update',
+      description: 'Permission to update existing internships'
+    },
+    {
+      id: 52,
+      code: 'internship:delete',
+      description: 'Permission to delete internships'
+    },
+    {
+      id: 53,
+      code: 'internship:stats',
+      description: 'Permission to read the internship hiring rate'
+    },
+
+    // Employment Record permissions
+    {
+      id: 54,
+      code: 'employment-record:read',
+      description: 'Permission to read employment record information'
+    },
+    {
+      id: 55,
+      code: 'employment-record:create',
+      description: 'Permission to create new employment records'
+    },
+    {
+      id: 56,
+      code: 'employment-record:update',
+      description: 'Permission to update existing employment records'
+    },
+    {
+      id: 57,
+      code: 'employment-record:delete',
+      description: 'Permission to delete employment records'
+    },
+
+    // Survey permissions
+    {
+      id: 58,
+      code: 'survey:read',
+      description: 'Permission to read surveys and their answer summary'
+    },
+    {
+      id: 59,
+      code: 'survey:create',
+      description: 'Permission to create new surveys'
+    },
+    {
+      id: 60,
+      code: 'survey:update',
+      description: 'Permission to update existing surveys'
+    },
+    {
+      id: 61,
+      code: 'survey:delete',
+      description: 'Permission to delete surveys'
+    },
+
+    // Survey Question permissions
+    {
+      id: 62,
+      code: 'survey-question:read',
+      description: 'Permission to read survey question information'
+    },
+    {
+      id: 63,
+      code: 'survey-question:create',
+      description: 'Permission to create new survey questions'
+    },
+    {
+      id: 64,
+      code: 'survey-question:update',
+      description: 'Permission to update existing survey questions'
+    },
+    {
+      id: 65,
+      code: 'survey-question:delete',
+      description: 'Permission to delete survey questions'
+    },
+
+    // Survey Invitation permissions
+    {
+      id: 66,
+      code: 'survey-invitation:read',
+      description: 'Permission to read survey invitation information'
+    },
+    {
+      id: 67,
+      code: 'survey-invitation:create',
+      description: 'Permission to create survey invitations (send survey links)'
+    },
+    {
+      id: 68,
+      code: 'survey-invitation:update',
+      description: 'Permission to update existing survey invitations'
+    },
+    {
+      id: 69,
+      code: 'survey-invitation:delete',
+      description: 'Permission to delete survey invitations'
+    },
+
+    // Survey Answer permissions
+    {
+      id: 70,
+      code: 'survey-answer:read',
+      description: 'Permission to read survey answers'
+    },
+    {
+      id: 71,
+      code: 'survey-answer:create',
+      description: 'Permission to create survey answers'
+    },
+    {
+      id: 72,
+      code: 'survey-answer:update',
+      description: 'Permission to update existing survey answers'
+    },
+    {
+      id: 73,
+      code: 'survey-answer:delete',
+      description: 'Permission to delete survey answers'
     }
   ], {});
 
@@ -262,7 +421,14 @@ module.exports = {
       29, 30, 31, 32,
       33, 34, 35, 36,
       37, 38, 39, 40,
-      41, 42, 43, 44
+      41, 42, 43, 44,
+      45, 46, 47, 48,
+      49, 50, 51, 52, 53,
+      54, 55, 56, 57,
+      58, 59, 60, 61,
+      62, 63, 64, 65,
+      66, 67, 68, 69,
+      70, 71, 72, 73
     ] });
   }
 };
