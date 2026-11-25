@@ -102,7 +102,58 @@ module.exports = {
       // Administrator College - Student Enrollment permissions
       { id: 68, role_id: 4, permission_id: 41 },
       { id: 69, role_id: 4, permission_id: 42 },
-      { id: 70, role_id: 4, permission_id: 43 }
+      { id: 70, role_id: 4, permission_id: 43 },
+
+      // Administrator IT permissions
+      { id: 71, role_id: 1, permission_id: 74 }, // Student
+      { id: 72, role_id: 1, permission_id: 75 },
+      { id: 73, role_id: 1, permission_id: 76 },
+      { id: 74, role_id: 1, permission_id: 77 },
+      { id: 75, role_id: 1, permission_id: 78 }, // Skill
+      { id: 76, role_id: 1, permission_id: 79 },
+      { id: 77, role_id: 1, permission_id: 80 },
+      { id: 78, role_id: 1, permission_id: 81 },
+      { id: 79, role_id: 1, permission_id: 82 }, // Student Skill
+      { id: 80, role_id: 1, permission_id: 83 },
+      { id: 81, role_id: 1, permission_id: 84 },
+      { id: 82, role_id: 1, permission_id: 85 },
+      { id: 83, role_id: 1, permission_id: 86 }, // Student Interest
+      { id: 84, role_id: 1, permission_id: 87 },
+      { id: 85, role_id: 1, permission_id: 88 },
+      { id: 86, role_id: 1, permission_id: 89 },
+      { id: 87, role_id: 1, permission_id: 90 }, // Consent
+      { id: 88, role_id: 1, permission_id: 91 },
+      { id: 89, role_id: 1, permission_id: 92 },
+      { id: 90, role_id: 1, permission_id: 93 },
+      { id: 91, role_id: 1, permission_id: 94 }, // Consent Request
+      { id: 92, role_id: 1, permission_id: 95 },
+      { id: 93, role_id: 1, permission_id: 96 },
+      { id: 94, role_id: 1, permission_id: 97 },
+
+      // User permissions
+      { id: 95, role_id: 2, permission_id: 74 }, // Student
+      { id: 96, role_id: 2, permission_id: 78 }, // Skill
+      { id: 97, role_id: 2, permission_id: 82 }, // Student Skill
+      { id: 98, role_id: 2, permission_id: 86 }, // Student Interest
+      { id: 99, role_id: 2, permission_id: 90 }, // Consent
+      { id: 100, role_id: 2, permission_id: 94 }, // Consent Request
+
+      // Tutor permissions
+      { id: 101, role_id: 3, permission_id: 74 }, // Student
+      { id: 102, role_id: 3, permission_id: 78 }, // Skill
+      { id: 103, role_id: 3, permission_id: 82 }, // Student Skill
+      { id: 104, role_id: 3, permission_id: 86 }, // Student Interest
+      { id: 105, role_id: 3, permission_id: 90 }, // Consent
+      { id: 106, role_id: 3, permission_id: 94 }, // Consent Request
+
+      // Administrator College permissions
+      { id: 107, role_id: 4, permission_id: 74 }, // Student
+      { id: 108, role_id: 4, permission_id: 78 }, // Skill
+      { id: 109, role_id: 4, permission_id: 82 }, // Student Skill
+      { id: 110, role_id: 4, permission_id: 86 }, // Student Interest
+      { id: 111, role_id: 4, permission_id: 90 }, // Consent
+      { id: 112, role_id: 4, permission_id: 94 }  // Consent Request
+
     ], {});
 
     // Synchronous PostgreSQL autoincrement

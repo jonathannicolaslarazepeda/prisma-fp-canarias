@@ -394,7 +394,139 @@ module.exports = {
       id: 73,
       code: 'survey-answer:delete',
       description: 'Permission to delete survey answers'
+    },
+    // Student permissions
+    {
+      id: 74,
+      code: 'student:read',
+      description: 'Permission to read student information'
+    },
+    {
+      id: 75,
+      code: 'student:create',
+      description: 'Permission to create new students'
+    },
+    {
+      id: 76,
+      code: 'student:update',
+      description: 'Permission to update existing students'
+    },
+    {
+      id: 77,
+      code: 'student:delete',
+      description: 'Permission to delete students'
+    },
+ 
+    // Skill permissions
+    {
+      id: 78,
+      code: 'skill:read',
+      description: 'Permission to read skill information'
+    },
+    {
+      id: 79,
+      code: 'skill:create',
+      description: 'Permission to create new skills'
+    },
+    {
+      id: 80,
+      code: 'skill:update',
+      description: 'Permission to update existing skills'
+    },
+    {
+      id: 81,
+      code: 'skill:delete',
+      description: 'Permission to delete skills'
+    },
+ 
+    // Student Skill permissions
+    {
+      id: 82,
+      code: 'student-skill:read',
+      description: 'Permission to read student skill information'
+    },
+    {
+      id: 83,
+      code: 'student-skill:create',
+      description: 'Permission to create new student skills'
+    },
+    {
+      id: 84,
+      code: 'student-skill:update',
+      description: 'Permission to update existing student skills'
+    },
+    {
+      id: 85,
+      code: 'student-skill:delete',
+      description: 'Permission to delete student skills'
+    },
+ 
+    // Student Interest permissions
+    {
+      id: 86,
+      code: 'student-interest:read',
+      description: 'Permission to read student interest information'
+    },
+    {
+      id: 87,
+      code: 'student-interest:create',
+      description: 'Permission to create new student interests'
+    },
+    {
+      id: 88,
+      code: 'student-interest:update',
+      description: 'Permission to update existing student interests'
+    },
+    {
+      id: 89,
+      code: 'student-interest:delete',
+      description: 'Permission to delete student interests'
+    },
+ 
+    // Consent permissions
+    {
+      id: 90,
+      code: 'consent:read',
+      description: 'Permission to read consent information'
+    },
+    {
+      id: 91,
+      code: 'consent:create',
+      description: 'Permission to create new consents'
+    },
+    {
+      id: 92,
+      code: 'consent:update',
+      description: 'Permission to update existing consents'
+    },
+    {
+      id: 93,
+      code: 'consent:delete',
+      description: 'Permission to delete consents'
+    },
+ 
+    // Consent Request permissions
+    {
+      id: 94,
+      code: 'consent-request:read',
+      description: 'Permission to read consent request information'
+    },
+    {
+      id: 95,
+      code: 'consent-request:create',
+      description: 'Permission to create new consent requests'
+    },
+    {
+      id: 96,
+      code: 'consent-request:update',
+      description: 'Permission to update existing consent requests'
+    },
+    {
+      id: 97,
+      code: 'consent-request:delete',
+      description: 'Permission to delete consent requests'
     }
+
   ], {});
 
     //Synchronous PostgreSQL autoincrement
