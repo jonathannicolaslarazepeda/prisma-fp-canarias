@@ -1,21 +1,22 @@
 import { Router } from "express";
 import { ConsentRequestController } from "./consent-request.controller.js";
 import { bearerAuth } from "../../middlewares/bearer-auth.middleware.js";
+import { authorize } from "../rbac/authorize.middleware.js";
 
 const router = Router();
 
 router.use(bearerAuth);
 
-router.get("/", ConsentRequestController.getAll);
+router.get("/", authorize('consent-request:read'), ConsentRequestController.getAll);
 
-router.get("/students/:id", ConsentRequestController.getByStudentId);
+router.get("/students/:id", authorize('consent-request:read'), ConsentRequestController.getByStudentId);
 
-router.get("/:id", ConsentRequestController.getById);
+router.get("/:id", authorize('consent-request:read'), ConsentRequestController.getById);
 
-router.post("/", ConsentRequestController.create);
+router.post("/", authorize('consent-request:create'), ConsentRequestController.create);
 
-router.put("/:id", ConsentRequestController.update);
+router.put("/:id", authorize('consent-request:update'), ConsentRequestController.update);
 
-router.delete("/:id", ConsentRequestController.delete);
+router.delete("/:id", authorize('consent-request:delete'), ConsentRequestController.delete);
 
 export default router;
