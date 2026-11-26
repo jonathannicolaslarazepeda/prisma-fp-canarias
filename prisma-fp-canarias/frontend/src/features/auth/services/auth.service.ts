@@ -1,50 +1,57 @@
-// import { apiFetch } from '../../../services/api'
-// import { saveSession, clearSession } from '../../../services/session'
+import { apiFetch } from '../../../services/api'
 
-// export interface AuthResponse {
-//     message: string
-//     token: string
-//     tokenType: string
-//     expiresIn: number
-// }
+export interface AuthUser {
+    id: number
+    email: string
+    firstName: string
+    lastName: string
+}
 
-// export const authService = {
+export interface LoginResponse {
+    user: AuthUser
+    token: string
+}
 
-//     login: async (email: string, password: string) => {
-//         const response = await apiFetch<AuthResponse>('/auth/login', {
-//             headers: {
-//                 'Authorization': `Basic ${btoa(`${email}:${password}`)}`
-//             },
-//             method: 'POST'
-//         })
+export interface RegisterResponse {
+    user: AuthUser
+    token: string
+}
 
-//         saveSession({
-//             token: response.token,
-//             username: email,
-//             expiresAt: Date.now() + response.expiresIn * 1000
-//         })
+export const authService = {
 
-//         return response
-//     },
+    // ==================== LOGIN ====================
 
-//     register: async (email: string, password: string, firstName: string, lastName: string) => {
-//         const response = await apiFetch<AuthResponse>('/auth/register', {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Basic ${btoa(`${email}:${password}`)}`
-//             },
-//             method: 'POST',
-//             body: JSON.stringify({ firstName, lastName })
-//         })
+    login: (email: string, password: string) =>
+        apiFetch<LoginResponse>('/auth/login', {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify({ email, password })
+        }),
 
-//         saveSession({
-//             token: response.token,
-//             username: email,
-//             expiresAt: Date.now() + response.expiresIn * 1000
-//         })
+    // ==================== REGISTER ====================
 
-//         return response
-//     },
+    register: (
+        email: string,
+        password: string,
+        firstName: string,
+        lastName: string
+    ) =>
+        apiFetch<RegisterResponse>('/auth/register', {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify({
+                email,
+                password,
+                firstName,
+                lastName
+            })
+        }),
 
-//     logout: () => clearSession()
-// }
+    // ==================== LOGOUT ====================
+
+    logout: () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+    }
+
+}

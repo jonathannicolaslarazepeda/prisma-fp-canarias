@@ -1,6 +1,6 @@
-import BicyclesPage from './features/bicycles/pages/BicyclesPage'
+import AuthPage from './features/auth/pages/AuthPage'
 
 function App() {
-  return <BicyclesPage />
+  return <AuthPage />
 }
 export default App
